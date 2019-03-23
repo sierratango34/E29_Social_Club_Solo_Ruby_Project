@@ -1,1 +1,14 @@
 <h1>Members List</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Attendance Count</th>
+  </tr>
+  <% for member in @members %>
+  <tr>
+    <td><%= member.pretty_name %></td>
+    <td><%= member.attendance_count %></td>
+  </tr>
+  <% end %>
+</table>
