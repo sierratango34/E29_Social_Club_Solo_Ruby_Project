@@ -33,4 +33,9 @@ class Event
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
+  def self.delete_all()
+    sql = 'DELETE FROM events'
+    SqlRunner.rub(sql)
+  end
 end
