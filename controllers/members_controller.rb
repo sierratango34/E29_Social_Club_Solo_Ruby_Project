@@ -17,6 +17,8 @@ get '/members/:id' do #show
   erb(:'members/show')
 end
 
-# post '/members/' do #create
-#
-# end
+post '/members' do #create
+  @member = Member.new(params)
+  @member.save()
+  erb(:'members/create')
+end
