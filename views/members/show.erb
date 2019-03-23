@@ -9,3 +9,6 @@
 <p>Attendance Count: <%= @member.attendance_count %></p>
 
 <p><a href="/e29-social-club/members/<%=@member.id%>/edit">Edit Member Details</a></p>
+<form action="/e29-social-club/members/<%=@member.id%>/delete" method="post">
+  <input type="submit" value="Delete Member">
+</form>

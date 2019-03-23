@@ -23,7 +23,18 @@ post '/e29-social-club/members' do #create
   erb(:'members/create')
 end
 
-get '/e29-social-club/members/:id/edit' do #edit 
+get '/e29-social-club/members/:id/edit' do #edit
   @member = Member.find(params['id'])
   erb(:'members/edit')
+end
+
+post '/e29-social-club/members/:id' do #update
+  Member.new(params).update
+  erb(:'members/update')
+end
+
+post '/e29-social-club/members/:id/delete' do #delete
+  @member = Member.find(params['id'])
+  @member.delete
+  erb(:'members/delete')
 end
