@@ -1,7 +1,7 @@
 require('sinatra')
 require('sinatra/reloader') if development?
 require_relative('../models/member')
-set :root, File.dirname(solo_ruby_project)
+set :views, Proc.new { File.join(root, "../views") }
 
 get '/members' do
   @members = Member.all()
