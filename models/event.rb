@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner')
+
 class Event
 
   attr_reader :type, :number_attending, :max_capacity, :id

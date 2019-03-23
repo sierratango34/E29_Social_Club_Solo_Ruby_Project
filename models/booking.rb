@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner')
+
 class Booking
 
   attr_reader :id, :member_id, :event_id
@@ -62,5 +64,5 @@ class Booking
     event_data = SqlRunner.run(sql, values).first
     event = event_data.map { |hash| Event.new(hash)  }
     return event
-  end 
+  end
 end
