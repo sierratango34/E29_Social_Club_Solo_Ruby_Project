@@ -39,7 +39,7 @@ class Event
 
   def self.delete_all()
     sql = 'DELETE FROM events'
-    SqlRunner.rub(sql)
+    SqlRunner.run(sql)
   end
 
   #additional methods
