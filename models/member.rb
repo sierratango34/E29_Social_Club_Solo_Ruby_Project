@@ -9,6 +9,14 @@ class Member
     @attendance_count = options['attendance_count'].to_i
   end
 
+  def save()
+    sql = 'INSERT INTO members (first_name, last_name, attendance_count) VALUES ($1, $2, $3) RETURNING id'
+    values = [@first_name, @last_name, @attendance_count]
+    results = SqlRunner.run(sql, values).first
+    @id = results['id'].to_i
+  end
+
+
 
 
 

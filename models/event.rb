@@ -9,4 +9,11 @@ class Event
     @max_capacity = options['max_capacity'].to_i
   end
 
+  def save()
+    sql = 'INSERT INTO events (type, number_attending, max_capacity) VALUES ($1, $2, $3) RETURNING id'
+    values = [@type, @number_attending, @max_capacity]
+    results = SqlRunner.run(sql, values).first
+    @id = results['id'].to_i
+  end
+  
 end
