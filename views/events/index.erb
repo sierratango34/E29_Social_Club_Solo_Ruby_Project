@@ -1,0 +1,19 @@
+<h1>All Events</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Number Attending</th>
+    <th>Max Capacity</th>
+    <th></th>
+  </tr>
+  <% for event in @events %>
+  <tr>
+    <td><%=event.type%></td>
+    <td><%=event.number_attending%></td>
+    <td><%=event.max_capacity%></td>
+    <td><a href="/e29-social-club/events/<%=event.id%>">More Details</a></td>
+  </tr>
+  <% end %>
+
+</table>
