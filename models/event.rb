@@ -15,5 +15,10 @@ class Event
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
   end
-  
+
+  def self.all
+    sql = 'SELECT * FROM events'
+    results = SqlRunner.run(sql)
+    return results.map { |hash| Event.new(hash) }
+  end
 end

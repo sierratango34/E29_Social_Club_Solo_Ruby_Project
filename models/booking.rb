@@ -14,4 +14,10 @@ class Booking
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
   end
+
+  def self.all
+    sql = 'SELECT * FROM bookings'
+    results = SqlRunner.run(sql)
+    return results.map { |hash| Booking.new(hash) }
+  end
 end
