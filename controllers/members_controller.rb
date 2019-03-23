@@ -1,9 +1,9 @@
 require('sinatra')
-require('sinatra/contrib/all')
+require('sinatra/reloader') if development?
 require_relative('../models/member')
-also_reload('../models/member')
+set :root, File.dirname(solo_ruby_project)
 
 get '/members' do
-  @members = Member.all
-  erb(:"members/index")
+  @members = Member.all()
+  erb(:'members/index')
 end
