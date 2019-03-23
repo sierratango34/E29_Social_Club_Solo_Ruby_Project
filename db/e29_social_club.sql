@@ -6,14 +6,14 @@ CREATE TABLE members (
   id SERIAL4 PRIMARY KEY,
   first_name VARCHAR(255),
   last_name VARCHAR(255),
-  attendance_count INT4
+  attendance_count NUMERIC
 );
 
 CREATE TABLE events (
   id SERIAL4 PRIMARY KEY,
   type VARCHAR(255),
-  number_attending INT4,
-  max_capacity INT4
+  number_attending NUMERIC,
+  max_capacity NUMERIC
 );
 
 CREATE TABLE bookings (

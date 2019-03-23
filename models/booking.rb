@@ -16,6 +16,12 @@ class Booking
     values = [@member_id, @event_id]
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
+
+    sql2 = 'SELECT * FROM members WHERE members.id = $1'
+    values2 = [@member_id]
+    member_data = SqlRunner.run(sql2, values2).first
+    member = member_data.map { |hash| Member.new(hash)  }
+    return member['attendance_count'].increase_attendance_count
   end
 
   def self.all()

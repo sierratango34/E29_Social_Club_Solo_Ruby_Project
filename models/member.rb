@@ -57,4 +57,8 @@ class Member
     event_data = SqlRunner.run(sql, values)
     return event_data.map { |hash| Event.new(hash)  }
   end
+
+  def increase_attendance_count
+    return @attendance_count +=1
+  end
 end
