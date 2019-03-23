@@ -23,7 +23,7 @@ post '/e29-social-club/members' do #create
   erb(:'members/create')
 end
 
-get '/e29-social-club/members/:id/edit' do
+get '/e29-social-club/members/:id/edit' do #edit 
   @member = Member.find(params['id'])
   erb(:'members/edit')
 end

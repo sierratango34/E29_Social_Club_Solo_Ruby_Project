@@ -1,0 +1,13 @@
+<form action="/e29-social-club/members/<%= @member.id %>" method="post">
+
+  <label for="first-name">First Name:</label>
+  <input type="text" name="first_name" value="<%= @member.first_name %>">
+
+  <label for="last-name">Last Name:</label>
+  <input type="text" name="last_name" value="<%= @member.last_name %>">
+
+  <label for="attendance-count">Attendance Count:</label>
+  <input type="text" name="attendance_count" value="<%= @member.attendance_count %>">
+
+  <input type="submit" value="Update">
+</form>
