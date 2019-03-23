@@ -38,4 +38,12 @@ class Member
     sql = 'DELETE FROM members'
     SqlRunner.run(sql)
   end
+
+  def self.find(id)
+    sql = 'SELECT * FROM members WHERE id = $1'
+    values = [id]
+    member = SqlRunner.run(sql, values).first
+    result = Member.new(member)
+    return result
+  end
 end

@@ -38,4 +38,12 @@ class Event
     sql = 'DELETE FROM events'
     SqlRunner.rub(sql)
   end
+
+  def self.find(id)
+    sql = 'SELECT * FROM events WHERE id = $1'
+    values = [id]
+    event = SqlRunner.run(sql, values).first
+    result = Event.new(event)
+    return result
+  end
 end
