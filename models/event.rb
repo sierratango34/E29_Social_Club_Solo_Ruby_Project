@@ -2,7 +2,8 @@ require_relative('../db/sql_runner')
 
 class Event
 
-  attr_reader :type, :number_attending, :max_capacity, :id
+  attr_reader :id
+  attr_accessor :type, :number_attending, :max_capacity
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
