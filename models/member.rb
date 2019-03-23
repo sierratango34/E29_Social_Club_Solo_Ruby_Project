@@ -61,4 +61,8 @@ class Member
   def increase_attendance_count
     return @attendance_count +=1
   end
+
+  def pretty_name
+    return "#{@first_name} #{@last_name}"
+  end
 end

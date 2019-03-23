@@ -31,4 +31,8 @@ class TestMember < MiniTest::Test
   def test_increase_attendance_count_method
     assert_equal(5, @member1.increase_attendance_count)
   end
+
+  def test_pretty_name_method
+    assert_equal("Pim Sritawan", @member1.pretty_name)
+  end
 end
