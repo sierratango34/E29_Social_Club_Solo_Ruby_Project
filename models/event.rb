@@ -9,6 +9,7 @@ class Event
     @max_capacity = options['max_capacity'].to_i
   end
 
+  #CRUD actions
   def save()
     sql = 'INSERT INTO events (type, number_attending, max_capacity) VALUES ($1, $2, $3) RETURNING id'
     values = [@type, @number_attending, @max_capacity]
@@ -39,11 +40,19 @@ class Event
     SqlRunner.rub(sql)
   end
 
+  #additional methods
   def self.find(id)
     sql = 'SELECT * FROM events WHERE id = $1'
     values = [id]
     event = SqlRunner.run(sql, values).first
     result = Event.new(event)
     return result
+  end
+
+  def members_attending
+    sql = 'SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.event_id = $1'
+    values = [@id]
+    member_data = SqlRunner.run(sql, values)
+    return member_data.map { |hash| Member.new(hash)  }
   end
 end

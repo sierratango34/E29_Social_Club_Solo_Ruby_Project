@@ -9,6 +9,7 @@ class Member
     @attendance_count = options['attendance_count'].to_i
   end
 
+  #CRUD actions
   def save()
     sql = 'INSERT INTO members (first_name, last_name, attendance_count) VALUES ($1, $2, $3) RETURNING id'
     values = [@first_name, @last_name, @attendance_count]
@@ -39,11 +40,19 @@ class Member
     SqlRunner.run(sql)
   end
 
+  #Additional methods
   def self.find(id)
     sql = 'SELECT * FROM members WHERE id = $1'
     values = [id]
     member = SqlRunner.run(sql, values).first
     result = Member.new(member)
     return result
+  end
+
+  def events_attending
+    sql = 'SELECT events.* FROM events INNER JOIN bookings ON bookings.event_id = events.id WHERE bookings.member_id = $1'
+    values = [@id]
+    event_data = SqlRunner.run(sql, values)
+    return event_data.map { |hash| Event.new(hash)  }
   end
 end
