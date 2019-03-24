@@ -8,3 +8,6 @@
 <p>Max Capacity: <%= @event.max_capacity %></p>
 
 <a href="/e29-social-club/events/<%=@event.id%>/edit">Edit Event</a>
+<form action="/e29-social-club/events/<%=@event.id%>/delete" method="post">
+  <input type="submit" value="Delete Event">
+</form>
