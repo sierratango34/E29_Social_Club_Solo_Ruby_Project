@@ -21,8 +21,9 @@ class Booking
 
   def self.all()
     sql = 'SELECT * FROM bookings'
-    results = SqlRunner.run(sql)
-    return results.map { |hash| Booking.new(hash) }
+    booking_data = SqlRunner.run(sql)
+    bookings = map_items(booking_data)
+    return bookings
   end
 
   def update()
@@ -65,5 +66,9 @@ class Booking
     event_data = SqlRunner.run(sql, values).first
     event = event_data.map { |hash| Event.new(hash)  }
     return event
+  end
+
+  def self.map_items(booking_data)
+    return booking_data.map { |hash| Booking.new(hash) }
   end
 end

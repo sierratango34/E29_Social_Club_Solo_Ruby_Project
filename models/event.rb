@@ -22,8 +22,9 @@ class Event
 
   def self.all()
     sql = 'SELECT * FROM events'
-    results = SqlRunner.run(sql)
-    return results.map { |hash| Event.new(hash) }
+    event_data = SqlRunner.run(sql)
+    events = map_items(event_data)
+    return events
   end
 
   def update()
@@ -57,5 +58,9 @@ class Event
     values = [@id]
     member_data = SqlRunner.run(sql, values)
     return member_data.map { |hash| Member.new(hash)  }
+  end
+
+  def self.map_items(event_data)
+    return event_data.map { |hash| Event.new(hash) }
   end
 end
