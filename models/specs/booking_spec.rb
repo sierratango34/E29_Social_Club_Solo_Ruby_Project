@@ -36,5 +36,12 @@ class TestBooking < MiniTest::Test
   # def test_booking_event
   #   assert_equal(@event1, @booking1.event_id)
   # end
+# -----------------------------
+  # def test_get_member_pretty_name
+  #   assert_equal("Pim Sritawan", @booking1.get_member_pretty_name)
+  # end
+  # NoMethodError: undefined method `pretty_name' for 0:Integer
+  # cannot perform .pretty_name on id, but how do i access the names for the member id?
 
+# -----------------------------
 end

@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require_relative('member')
+require_relative('event')
 
 class Booking
 
@@ -70,5 +72,13 @@ class Booking
 
   def self.map_items(booking_data)
     return booking_data.map { |hash| Booking.new(hash) }
+  end
+
+  def get_member_pretty_name
+    sql = 'SELECT * FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE id = $1'
+    values = [@id]
+    member_data = SqlRunner.run(sql, values)
+    booking_member = member_data.map { |hash| Member.new(hash) }
+    return booking_member.pretty_name
   end
 end
