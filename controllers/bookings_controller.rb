@@ -30,3 +30,8 @@ get '/e29-social-club/bookings/:id/edit' do
   @booking = Booking.find(params[:id])
   erb(:'bookings/edit')
 end
+
+post '/e29-social-club/bookings/:id' do
+  Booking.new(params).update
+  erb(:'bookings/update')
+end
