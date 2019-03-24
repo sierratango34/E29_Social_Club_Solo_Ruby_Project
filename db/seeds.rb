@@ -90,3 +90,5 @@ booking6 = Booking.new({
   "event_id" => event3.id
   })
 booking6.save
+
+# p booking1.get_member_pretty_name

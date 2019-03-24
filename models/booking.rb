@@ -74,11 +74,16 @@ class Booking
     return booking_data.map { |hash| Booking.new(hash) }
   end
 
-  def get_member_pretty_name
-    sql = 'SELECT * FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE id = $1'
-    values = [@id]
-    member_data = SqlRunner.run(sql, values)
-    booking_member = member_data.map { |hash| Member.new(hash) }
-    return booking_member.pretty_name
-  end
+  # def get_member_pretty_name
+  #   sql = 'SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE members.id = $1'
+  #   values = [@id]
+  #   member_data = SqlRunner.run(sql, values).first
+  #   booking_member = member_data.map { |hash| Member.new(hash) }
+  #   member = Member.new(booking_member)
+  #   return booking_member.get_member_pretty_name
+  # end
+
+  # def get_member_pretty_name
+  #
+  # end
 end
