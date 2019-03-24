@@ -1,0 +1,19 @@
+<h1>All Bookings</h1>
+
+<table>
+  <tr>
+    <th>Booking Reference Number</th>
+    <th>Member</th>
+    <th>Event</th>
+    <th></th>
+  </tr>
+
+  <% for booking in @bookings %>
+  <tr>
+    <td><%=booking.id%></td>
+    <td><%=booking.member_id%></td>
+    <td><%=booking.event_id%></td>
+    <td></td>
+  </tr>
+  <% end %>
+</table>
