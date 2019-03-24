@@ -1,0 +1,23 @@
+<h1>Edit Event</h1>
+
+<nav>
+  <a href="/e29-social-club/events">Events Home</a>
+</nav>
+
+<form action="/e29-social-club/events/<%=@event.id%>" method="post">
+
+  <label for="type">Type: </label>
+  <input type="text" name="type" value="<%=@event.type%>">
+
+  <label for="number-attending">Number Attending: </label>
+  <input type="text" name="number_attending" value="<%=@event.number_attending%>">
+
+  <label for="max-capacity">Max Capacity: </label>
+  <input type="text" name="max_capacity" value="<%=@event.max_capacity%>">
+
+  <input type="submit" value="Update">
+
+</form>
+<footer>
+  <a href="/e29-social-club/events/<%=@event.id%>">Back to Event Details</a>
+</footer>

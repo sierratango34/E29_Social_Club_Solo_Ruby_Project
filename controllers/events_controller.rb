@@ -22,3 +22,8 @@ post '/e29-social-club/events' do
   @event.save
   erb(:'events/create')
 end
+
+get '/e29-social-club/events/:id/edit' do
+  @event = Event.find(params[:id])
+  erb(:'events/edit')
+end
