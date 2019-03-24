@@ -29,7 +29,7 @@ class Event
   def update()
     sql = 'UPDATE events SET (type, number_attending, max_capacity) = ($1, $2, $3) WHERE id = $4'
     values = [@type, @number_attending, @max_capacity, @id]
-    results = SqlRunner(sql, values)
+    results = SqlRunner.run(sql, values)
   end
 
   def delete()
