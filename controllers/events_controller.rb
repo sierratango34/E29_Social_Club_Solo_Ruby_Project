@@ -16,3 +16,9 @@ get '/e29-social-club/events/:id' do
   @event = Event.find(params[:id])
   erb(:'events/show')
 end
+
+post '/e29-social-club/events' do
+  @event = Event.new(params)
+  @event.save
+  erb(:'events/create')
+end
