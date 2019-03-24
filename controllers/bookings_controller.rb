@@ -19,3 +19,9 @@ get '/e29-social-club/bookings/:id' do
   @booking = Booking.find(params[:id])
   erb(:'bookings/show')
 end
+
+post '/e29-social-club/bookings' do
+  @booking = Booking.new(params)
+  @booking.save
+  erb(:'bookings/create')
+end
