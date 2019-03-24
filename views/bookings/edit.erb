@@ -1,0 +1,19 @@
+<h1>Edit Booking <% @booking.id %></h1>
+
+<nav>
+  <a href="/e29-social-club/bookings">Bookings Home</a>
+</nav>
+
+<form action="/e29-social-club/bookings/<%=@booking.id%>" method="post">
+
+  <label for="member-id">Member</label>
+  <input type="text" name="member_id" value="<%=@booking.member_id%>">
+
+  <label for="event-id">Event</label>
+  <input type="text" name="event_id" value="<%=@booking.event_id%>">
+
+  <input type="submit" value="Add Booking">
+</form>
+<footer>
+  <a href="/e29-social-club/bookings/<%=@booking.id%>">Back to Booking Details</a>
+</footer>
