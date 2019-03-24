@@ -35,3 +35,9 @@ post '/e29-social-club/bookings/:id' do
   Booking.new(params).update
   erb(:'bookings/update')
 end
+
+post '/e29-social-club/bookings/:id/delete' do
+  @booking = Booking.find(params[:id])
+  @booking.delete
+  erb(:'bookings/delete')
+end
