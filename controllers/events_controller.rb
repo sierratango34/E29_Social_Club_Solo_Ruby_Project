@@ -12,7 +12,7 @@ get '/e29-social-club/events/new' do
   erb(:'events/new')
 end
 
-# get '/e29-social-club/events/:id' do
-#   @event = Event.find(params[:id])
-#   erb(:'events/show')
-# end
+get '/e29-social-club/events/:id' do
+  @event = Event.find(params[:id])
+  erb(:'events/show')
+end
