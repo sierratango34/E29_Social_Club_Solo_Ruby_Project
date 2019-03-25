@@ -11,10 +11,12 @@
     <option value="<%= member.id %>"><%= member.pretty_name %></option>
     <% end %>
   </select>
-  <!-- <input type="text" name="member_id"> -->
-
-  <label for="event-id">Event</label>
-  <input type="text" name="event_id">
+  Event:
+  <select for="event-id">
+    <% for event in @all_events %>
+    <option value="<%= event.id %>"><%= event.type %></option>
+    <% end %>
+  </select>
 
   <input type="submit" value="Add Booking">
 </form>
