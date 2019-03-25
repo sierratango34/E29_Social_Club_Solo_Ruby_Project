@@ -32,6 +32,8 @@ end
 
 get '/e29-social-club/bookings/:id/edit' do
   @booking = Booking.find(params[:id])
+  @all_members = Member.all()
+  @all_events = Event.all()
   erb(:'bookings/edit')
 end
 

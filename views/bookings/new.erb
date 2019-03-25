@@ -6,13 +6,13 @@
 
 <form action="/e29-social-club/bookings" method="post">
   Member:
-  <select for="member-id">
+  <select name="member-id">
     <% for member in @all_members %>
     <option value="<%= member.id %>"><%= member.pretty_name %></option>
     <% end %>
   </select>
   Event:
-  <select for="event-id">
+  <select name="event-id">
     <% for event in @all_events %>
     <option value="<%= event.id %>"><%= event.type %></option>
     <% end %>
