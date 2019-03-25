@@ -60,6 +60,18 @@ class Event
     return member_data.map { |hash| Member.new(hash)  }
   end
 
+  def members_attending_and_their_booking_ids
+    sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    INNER JOIN events
+    ON bookings.event_id = events.id
+    WHERE events.id = $1'
+    values = [@id]
+    members_and_their_booking_refs = SqlRunner.run(sql, values)
+    return members_and_their_booking_refs
+  end
   def self.map_items(event_data)
     return event_data.map { |hash| Event.new(hash) }
   end

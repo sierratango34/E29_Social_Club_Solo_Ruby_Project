@@ -76,8 +76,8 @@ class Member
     ON bookings.member_id = members.id
     WHERE members.id = $1'
     values = [@id]
-    events_and_booking_ref = SqlRunner.run(sql, values)
-    return events_and_booking_ref
+    events_and_booking_refs = SqlRunner.run(sql, values)
+    return events_and_booking_refs
   end
 
   def increase_attendance_count

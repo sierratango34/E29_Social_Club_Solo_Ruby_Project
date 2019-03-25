@@ -20,10 +20,10 @@
     <th>Member</th>
     <th>Booking Reference</th>
   </tr>
-  <% for member in @members %>
+  <% for member in @members_and_id %>
   <tr>
-    <td><a href="/e29-social-club/members/<%=member.id%>"><%=member.pretty_name%></a></td>
-    <td></td>
+    <td><a href="/e29-social-club/members/<%=member['member_id'].to_i%>"><%=member['member_id'].to_i%></a></td>
+    <td><a href="/e29-social-club/bookings/<%=member['booking_id'].to_i%>"><%=member['booking_id']%></a></td>
   </tr>
   <% end %>
 </table>
