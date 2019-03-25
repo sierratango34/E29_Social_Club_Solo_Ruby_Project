@@ -84,9 +84,16 @@ class Booking
     return hash_of_member_objects
   end
 
-  def 
+  def self.all_events_available
+    sql = 'SELECT events.* FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id'
 
+    all_events_array = SqlRunner.run(sql)
+    hash_of_event_objects = all_events_array.map { |hash| Event.new(hash) }
+    return hash_of_event_objects
   end
+  
   # def get_member_pretty_name
   #   sql = 'SELECT members.* FROM members
   #   INNER JOIN bookings
