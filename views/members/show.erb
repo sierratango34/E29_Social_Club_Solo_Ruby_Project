@@ -20,13 +20,10 @@
     <th>Event Name</th>
     <th>Booking Reference</th>
   </tr>
-  <% for event in @events %>
+  <% for event in @events_and_id %>
   <tr>
-    <td><a href="/e29-social-club/events/<%=event.id%>"><%=event.type%></a></td>
+    <td><a href="/e29-social-club/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
+    <td><a href="/e29-social-club/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
   </tr>
   <% end %>
-  <% for booking in @bookings %>
-    <td><a href="/e29-social-club/bookings/<%=booking.id%>"><%=booking.id%></a></td>
-  <% end %>
-
 </table>
