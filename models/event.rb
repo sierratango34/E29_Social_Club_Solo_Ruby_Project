@@ -84,26 +84,26 @@ class Event
     values = [@id]
     members_and_their_booking_refs = SqlRunner.run(sql, values)
     for i in members_and_their_booking_refs
-      member_id = i['member_id']
+      member_id = i['member_id'].to_i
       return Member.new(member_id)
     end
   end
 
-  def create_booking_from_booking_id
-    sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
-    FROM members
-    INNER JOIN bookings
-    ON bookings.member_id = members.id
-    INNER JOIN events
-    ON bookings.event_id = events.id
-    WHERE events.id = $1'
-    values = [@id]
-    members_and_their_booking_refs = SqlRunner.run(sql, values)
-    for i in members_and_their_booking_refs
-      booking_id = i['booking_id']
-      return Booking.new(member_id)
-    end
-  end
+  # def create_booking_from_booking_id
+  #   sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
+  #   FROM members
+  #   INNER JOIN bookings
+  #   ON bookings.member_id = members.id
+  #   INNER JOIN events
+  #   ON bookings.event_id = events.id
+  #   WHERE events.id = $1'
+  #   values = [@id]
+  #   members_and_their_booking_refs = SqlRunner.run(sql, values)
+  #   for i in members_and_their_booking_refs
+  #     booking_id = i['booking_id']
+  #     return Booking.new(member_id)
+  #   end
+  # end
 
   def self.map_items(event_data)
     return event_data.map { |hash| Event.new(hash) }
