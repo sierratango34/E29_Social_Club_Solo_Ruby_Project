@@ -57,9 +57,9 @@ class Booking
   def member
     sql = 'SELECT * FROM members WHERE members.id = $1'
     values = [@member_id]
-    member_data = SqlRunner.run(sql, values).first
-    member = member_data.map { |hash| Member.new(hash)  }
-    return member
+    member_data = SqlRunner.run(sql, values)
+    members = member_data.map { |hash| Member.new(hash)  }
+    return members.first()
   end
 
   def event
@@ -75,7 +75,10 @@ class Booking
   end
 
   # def get_member_pretty_name
-  #   sql = 'SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE members.id = $1'
+  #   sql = 'SELECT members.* FROM members
+  #   INNER JOIN bookings
+  #   ON bookings.member_id = members.id
+  #   WHERE members.id = $1'
   #   values = [@id]
   #   member_data = SqlRunner.run(sql, values).first
   #   booking_member = member_data.map { |hash| Member.new(hash) }

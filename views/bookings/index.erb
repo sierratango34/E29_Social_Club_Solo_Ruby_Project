@@ -14,7 +14,7 @@
   <% for booking in @bookings %>
   <tr>
     <td><%=booking.id%></td>
-    <td><%=booking.member_id%></td>
+    <td><%=booking.member.pretty_name%></td>
     <td><%=booking.event_id%></td>
     <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
   </tr>
