@@ -5,8 +5,8 @@
 </nav>
 
 <form action="/e29-social-club/bookings/<%=@booking.id%>" method="post">
-
-  <select name="member-id">
+  Member:
+  <select name="member_id">
     <option value="<%= @booking.member.pretty_name %>"><%=@booking.member.pretty_name%></option>
 
     <% for member in @all_members %>
@@ -16,9 +16,16 @@
     <% end %>
   </select>
 
-  <label for="event-id">Event</label>
-  <input type="text" name="event_id" value="<%=@booking.event.type%>">
+  Event:
+  <select name="event_id">
+    <option value="<%=@booking.event.type%>"><%= @booking.event.type %></option>
 
+    <% for event in @all_events %>
+      <% if event.type != @booking.event.type %>
+        <option value="<%= event.id %>"><%= event.type %></option>
+      <% end %>
+    <% end %>
+  </select>
   <input type="submit" value="Update">
 </form>
 <footer>
