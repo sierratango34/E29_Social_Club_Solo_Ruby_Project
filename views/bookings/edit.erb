@@ -10,7 +10,7 @@
     <option value="<%= @booking.member.pretty_name %>"><%=@booking.member.pretty_name%></option>
 
     <% for member in @all_members %>
-      <% if member.pretty_name != booking.member.pretty_name %>
+      <% if member.pretty_name != @booking.member.pretty_name %>
         <option value="<%= member.id %>"><%= member.pretty_name %></option>
       <% end %>
     <% end %>
