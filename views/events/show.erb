@@ -12,3 +12,18 @@
 <form action="/e29-social-club/events/<%=@event.id%>/delete" method="post">
   <input type="submit" value="Delete Event">
 </form>
+
+<h3>Members Attending</h3>
+
+<table>
+  <tr>
+    <th>Member</th>
+    <th>Booking Reference</th>
+  </tr>
+  <% for member in @members %>
+  <tr>
+    <td><a href="/e29-social-club/members/<%=member.id%>"><%=member.pretty_name%></a></td>
+    <td></td>
+  </tr>
+  <% end %>
+</table>

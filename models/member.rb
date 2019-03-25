@@ -60,6 +60,26 @@ class Member
     return event_data.map { |hash| Event.new(hash)  }
   end
 
+  def bookings
+    sql = 'SELECT * FROM bookings WHERE bookings.member_id = $1'
+    values = [@id]
+    booking_data = SqlRunner.run(sql, values)
+    return booking_data.map { |hash| Booking.new(hash) }
+  end
+
+  def events_attending_and_their_booking_ids
+    sql = 'SELECT events.type, bookings.id
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    INNER JOIN members
+    ON bookings.member_id = members.id
+    WHERE members.id = $1'
+    values = [@id]
+    events_and_booking_ref = SqlRunner.run(sql, values)
+    return events_and_booking_ref
+  end
+
   def increase_attendance_count
     return @attendance_count +=1
   end

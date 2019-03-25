@@ -14,6 +14,8 @@ end
 
 get '/e29-social-club/members/:id' do #show
   @member = Member.find(params[:id])
+  @events = @member.events_attending
+  @bookings = @member.bookings
   erb(:'members/show')
 end
 

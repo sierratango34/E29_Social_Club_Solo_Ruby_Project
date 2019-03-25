@@ -12,8 +12,6 @@ end
 
 get '/e29-social-club/bookings/new' do
   @booking = Booking.new(params)
-  # @all_members = Booking.all_members_available()
-  # @all_events = Booking.all_events_available()
   @all_members = Member.all()
   @all_events = Event.all()
   erb(:'bookings/new')
