@@ -10,7 +10,7 @@ end
 
 # get '/e29-social-club/members-first-name-alphabetical' do
 #   @members = Member.all_alphabetical_by_first_name
-#   erb(:'members/index-first-name-alphabetical'
+#   erb(:'members/index-first-name-alphabetical')
 # end
 
 get '/e29-social-club/members/new' do #new

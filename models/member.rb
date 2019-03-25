@@ -80,11 +80,12 @@ class Member
     return events_and_booking_refs
   end
 
-  def self.all_alphabetical_by_first_name
-    sql = 'SELECT * FROM members ORDER BY first_name'
-    member_data = SqlRunner.run(sql)
-    return members_first_name_alphabetical = map_items(member_data)
-  end
+  # def self.all_alphabetical_by_first_name
+  #   sql = 'SELECT * FROM members ORDER BY first_name'
+  #   member_data = SqlRunner.run(sql)
+  #   members_first_name_alphabetical = map_items(member_data)
+  #   return members_first_name_alphabetical
+  # end
 
   def increase_attendance_count
     return @attendance_count +=1
