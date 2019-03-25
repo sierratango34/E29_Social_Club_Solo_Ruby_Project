@@ -4,8 +4,8 @@
   <a href="/e29-social-club/bookings">Bookings Home</a>
 </nav>
 
-<p>Member: <%=@booking.member_id%></p>
-<p>Event: <%=@booking.event_id%></p>
+<p>Member: <%=@booking.member.pretty_name%></p>
+<p>Event: <%=@booking.event.type%></p>
 
 <a href="/e29-social-club/bookings/<%=@booking.id%>/edit">Edit Booking Details</a>
 

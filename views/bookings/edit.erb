@@ -7,10 +7,10 @@
 <form action="/e29-social-club/bookings/<%=@booking.id%>" method="post">
 
   <label for="member-id">Member</label>
-  <input type="text" name="member_id" value="<%=@booking.member_id%>">
+  <input type="text" name="member_id" value="<%=@booking.member.pretty_name%>">
 
   <label for="event-id">Event</label>
-  <input type="text" name="event_id" value="<%=@booking.event_id%>">
+  <input type="text" name="event_id" value="<%=@booking.event.type%>">
 
   <input type="submit" value="Update">
 </form>

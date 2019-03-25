@@ -65,13 +65,22 @@ class Booking
   def event
     sql = 'SELECT * FROM events WHERE events.id = $1'
     values = [@event_id]
-    event_data = SqlRunner.run(sql, values).first
+    event_data = SqlRunner.run(sql, values)
     event = event_data.map { |hash| Event.new(hash)  }
-    return event
+    return event.first
   end
 
   def self.map_items(booking_data)
     return booking_data.map { |hash| Booking.new(hash) }
+  end
+
+  def self.all_members_available
+    sql = 'SELECT members.* FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id'
+
+    all_members_array = SqlRunner.run(sql)
+    hash_of_member_objects = all_members_array.map { |hash| Member.new(hash) }
   end
 
   # def get_member_pretty_name
@@ -84,9 +93,5 @@ class Booking
   #   booking_member = member_data.map { |hash| Member.new(hash) }
   #   member = Member.new(booking_member)
   #   return booking_member.get_member_pretty_name
-  # end
-
-  # def get_member_pretty_name
-  #
   # end
 end
