@@ -61,7 +61,7 @@ class Event
   end
 
   def members_attending_and_their_booking_ids
-    sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
+    sql = 'SELECT members.id AS member_id, members.first_name AS first_name, members.last_name AS last_name, bookings.id AS booking_id
     FROM members
     INNER JOIN bookings
     ON bookings.member_id = members.id
@@ -73,21 +73,21 @@ class Event
     return members_and_their_booking_refs
   end
 
-  def create_member_from_member_id
-    sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
-    FROM members
-    INNER JOIN bookings
-    ON bookings.member_id = members.id
-    INNER JOIN events
-    ON bookings.event_id = events.id
-    WHERE events.id = $1'
-    values = [@id]
-    members_and_their_booking_refs = SqlRunner.run(sql, values)
-    for i in members_and_their_booking_refs
-      member_id = i['member_id'].to_i
-      return Member.new(member_id)
-    end
-  end
+  # def create_member_from_member_id
+  #   sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
+  #   FROM members
+  #   INNER JOIN bookings
+  #   ON bookings.member_id = members.id
+  #   INNER JOIN events
+  #   ON bookings.event_id = events.id
+  #   WHERE events.id = $1'
+  #   values = [@id]
+  #   members_and_their_booking_refs = SqlRunner.run(sql, values)
+  #   for i in members_and_their_booking_refs
+  #     member_id = i['member_id'].to_i
+  #     return Member.new(member_id)
+  #   end
+  # end
 
   # def create_booking_from_booking_id
   #   sql = 'SELECT members.id AS member_id, bookings.id AS booking_id
