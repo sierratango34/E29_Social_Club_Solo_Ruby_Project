@@ -5,8 +5,13 @@
 </nav>
 
 <form action="/e29-social-club/bookings" method="post">
-  <label for="member-id">Member</label>
-  <input type="text" name="member_id">
+  Member:
+  <select for="member-id">
+    <% for member in @all_members %>
+    <option value="<%= member.id %>"><%= member.pretty_name %></option>
+    <% end %>
+  </select>
+  <!-- <input type="text" name="member_id"> -->
 
   <label for="event-id">Event</label>
   <input type="text" name="event_id">

@@ -81,8 +81,12 @@ class Booking
 
     all_members_array = SqlRunner.run(sql)
     hash_of_member_objects = all_members_array.map { |hash| Member.new(hash) }
+    return hash_of_member_objects
   end
 
+  def 
+
+  end
   # def get_member_pretty_name
   #   sql = 'SELECT members.* FROM members
   #   INNER JOIN bookings
