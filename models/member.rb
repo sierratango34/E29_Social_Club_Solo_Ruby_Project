@@ -68,7 +68,7 @@ class Member
   end
 
   def events_attending_and_their_booking_ids
-    sql = 'SELECT events.type, bookings.id
+    sql = 'SELECT events.type AS event_name, bookings.id AS booking_ref
     FROM events
     INNER JOIN bookings
     ON bookings.event_id = events.id
