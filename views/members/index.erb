@@ -9,14 +9,15 @@
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>Attendance Count</th>
+    <th>Confirmed Bookings</th>
     <th></th>
   </tr>
+
   <% for member in @members %>
   <tr>
     <td><%= member.first_name %></td>
     <td><%= member.last_name %></td>
-    <td><%= member.attendance_count %></td>
+    <td><%= member.all_confirmed_bookings_count %></td>
     <td><a href="/e29-social-club/members/<%= member.id %>">More Details</a></td>
   </tr>
   <% end %>

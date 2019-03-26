@@ -5,19 +5,18 @@ require('pry-byebug')
 class Event
 
   attr_reader :id
-  attr_accessor :type, :number_attending, :max_capacity
+  attr_accessor :type, :max_capacity
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @type = options['type']
-    @number_attending = options['number_attending'].to_i
     @max_capacity = options['max_capacity'].to_i
   end
 
   #CRUD actions
   def save()
-    sql = 'INSERT INTO events (type, number_attending, max_capacity) VALUES ($1, $2, $3) RETURNING id'
-    values = [@type, @number_attending, @max_capacity]
+    sql = 'INSERT INTO events (type, max_capacity) VALUES ($1, $2) RETURNING id'
+    values = [@type, @max_capacity]
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
   end
@@ -30,8 +29,8 @@ class Event
   end
 
   def update()
-    sql = 'UPDATE events SET (type, number_attending, max_capacity) = ($1, $2, $3) WHERE id = $4'
-    values = [@type, @number_attending, @max_capacity, @id]
+    sql = 'UPDATE events SET (type, max_capacity) = ($1, $2) WHERE id = $3'
+    values = [@type, @max_capacity, @id]
     results = SqlRunner.run(sql, values)
   end
 
@@ -75,12 +74,81 @@ class Event
     return members_and_their_booking_refs
   end
 
-  def increase_number_attending
-    @number_attending += 1
-    return @number_attending.to_i
+  def confirmed_members_attending_and_their_booking_ids
+    sql = 'SELECT members.id AS member_id, members.first_name AS first_name, members.last_name AS last_name, bookings.id AS booking_id
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    INNER JOIN events
+    ON bookings.event_id = events.id
+    WHERE events.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    members_and_their_booking_refs = SqlRunner.run(sql, values)
+    return members_and_their_booking_refs
+  end
+
+  def all_bookings
+    sql = 'SELECT events.*
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    WHERE events.id = $1'
+    values = [@id]
+    bookings_data_array = SqlRunner.run(sql, values)
+    return bookings_data_array
+  end
+
+  def all_bookings_count
+    sql = 'SELECT events.*
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    WHERE events.id = $1'
+    values = [@id]
+    bookings_data_array = SqlRunner.run(sql, values)
+    return bookings_data_array.count
+  end
+
+  def confirmed_bookings
+    sql = 'SELECT events.*
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    WHERE events.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    bookings_data_array = SqlRunner.run(sql, values)
+    return bookings_data_array
+  end
+
+  def confirmed_bookings_count
+    sql = 'SELECT events.*
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    WHERE events.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    bookings_data_array = SqlRunner.run(sql, values)
+    return bookings_data_array.count
+  end
+
+  def is_confirmed_bookings_count_less_than_max_capacity?
+    sql = 'SELECT events.*
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    WHERE events.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    bookings_data_array = SqlRunner.run(sql, values)
+
+    if bookings_data_array.count < @max_capacity
+      true
+    else
+      false
+    end
   end
 
   def self.map_items(event_data)
     return event_data.map { |hash| Event.new(hash) }
   end
+
 end

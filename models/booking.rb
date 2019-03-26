@@ -89,11 +89,18 @@ class Booking
     return "False"
   end
 
-  def self.all_confirmed_bookings_for_attending_count
+  def all_confirmed_bookings_for_event
     sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
     values = [@event_id]
     all_confirmed_bookings = SqlRunner.run(sql, values)
     return all_confirmed_bookings.count
   end
 
+  # def all_bookings_for_event
+  #   sql = 'SELECT * FROM bookings WHERE event_id = $1'
+  #   values = [@event_id]
+  #   all_confirmed_bookings = SqlRunner.run(sql, values)
+  #   p all_confirmed_bookings
+  #   return all_confirmed_bookings.count
+  # end
 end

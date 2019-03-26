@@ -4,8 +4,8 @@
   <a href="/e29-social-club/events">Events Home</a>
 </nav>
 
-<p>Number Attending: <%= @event.number_attending %></p>
 <p>Max Capacity: <%= @event.max_capacity %></p>
+<p>Confirmed Bookings: <%= @event.confirmed_bookings_count %></p>
 
 <a href="/e29-social-club/events/<%=@event.id%>/edit">Edit Event</a>
 
@@ -13,17 +13,31 @@
   <input type="submit" value="Delete Event">
 </form>
 
-<h3>Members Attending</h3>
+<h3>All Bookings</h3>
 
 <table>
   <tr>
-    <th>Member</th>
     <th>Booking Reference</th>
+    <th>Member</th>
   </tr>
   <% for member in @event.members_attending_and_their_booking_ids %>
   <tr>
-    <td><a href="/e29-social-club/members/<%=member['member_id'].to_i%>"><%=member['first_name']%> <%=member['last_name']%></a></td>
     <td><a href="/e29-social-club/bookings/<%=member['booking_id'].to_i%>"><%=member['booking_id']%></a></td>
+    <td><a href="/e29-social-club/members/<%=member['member_id'].to_i%>"><%=member['first_name']%> <%=member['last_name']%></a></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Confirmed Bookings</h3>
+<table>
+  <tr>
+    <th>Booking Reference</th>
+    <th>Member</th>
+  </tr>
+  <% for member in @event.confirmed_members_attending_and_their_booking_ids %>
+  <tr>
+    <td><a href="/e29-social-club/bookings/<%=member['booking_id'].to_i%>"><%=member['booking_id']%></a></td>
+    <td><a href="/e29-social-club/members/<%=member['member_id'].to_i%>"><%=member['first_name']%> <%=member['last_name']%></a></td>
   </tr>
   <% end %>
 </table>

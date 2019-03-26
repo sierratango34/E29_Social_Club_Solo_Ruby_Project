@@ -7,7 +7,6 @@
 <form action="/e29-social-club/bookings" method="post">
   Member:
   <select name="member_id">
-    <!-- if statement required, if member =! true -->
     <% for member in @all_members %>
       <option value="<%= member.id %>"><%= member.pretty_name %></option>
     <% end %>
@@ -15,9 +14,8 @@
 
   Event:
   <select name="event_id">
-    <!-- if statement required, if event =! true -->
     <% for event in @all_events %>
-    <option value="<%= event.id %>"><%= event.type %></option>
+      <option value="<%= event.id %>"><%= event.type %></option>
     <% end %>
   </select>
 

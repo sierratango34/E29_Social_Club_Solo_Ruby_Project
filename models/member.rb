@@ -3,19 +3,18 @@ require_relative('../db/sql_runner')
 class Member
 
   attr_reader :id
-  attr_accessor :first_name, :last_name, :attendance_count
+  attr_accessor :first_name, :last_name
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @first_name = options['first_name']
     @last_name = options['last_name']
-    @attendance_count = options['attendance_count'].to_i
   end
 
   #CRUD actions
   def save()
-    sql = 'INSERT INTO members (first_name, last_name, attendance_count) VALUES ($1, $2, $3) RETURNING id'
-    values = [@first_name, @last_name, @attendance_count]
+    sql = 'INSERT INTO members (first_name, last_name) VALUES ($1, $2) RETURNING id'
+    values = [@first_name, @last_name]
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
   end
@@ -28,8 +27,8 @@ class Member
   end
 
   def update()
-    sql = 'UPDATE members SET (first_name, last_name, attendance_count) = ($1, $2, $3) WHERE id = $4'
-    values = [@first_name, @last_name, @attendance_count, @id]
+    sql = 'UPDATE members SET (first_name, last_name) = ($1, $2) WHERE id = $3'
+    values = [@first_name, @last_name, @id]
     results = SqlRunner.run(sql, values)
   end
 
@@ -80,17 +79,67 @@ class Member
     return events_and_booking_refs
   end
 
+  def all_confirmed_bookings
+    sql = 'SELECT members.*
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    WHERE members.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    members_bookings_data_array = SqlRunner.run(sql, values)
+    return members_bookings_data_array
+  end
+
+  def all_confirmed_bookings_count
+    sql = 'SELECT members.*
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    WHERE members.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    members_bookings_data_array = SqlRunner.run(sql, values)
+    return members_bookings_data_array.count
+  end
+
+  def all_bookings
+    sql = 'SELECT members.*
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    WHERE members.id = $1'
+    values = [@id]
+    members_bookings_data_array = SqlRunner.run(sql, values)
+    return members_bookings_data_array
+  end
+
+  def all_bookings_count
+    sql = 'SELECT members.*
+    FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    WHERE members.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    members_bookings_data_array = SqlRunner.run(sql, values)
+    return members_bookings_data_array.count
+  end
+
+
+
+  def change_all_members_array_to_member_objects
+    sql = 'SELECT * FROM members'
+    member_data = SqlRunner.run(sql)
+    @members = map_items(member_data)
+    for member in @members
+      return member
+    end
+  end
+
   # def self.all_alphabetical_by_first_name
   #   sql = 'SELECT * FROM members ORDER BY first_name'
   #   member_data = SqlRunner.run(sql)
   #   members_first_name_alphabetical = map_items(member_data)
   #   return members_first_name_alphabetical
   # end
-
-  def increase_attendance_count
-    @attendance_count += 1
-    return @attendance_count.to_i
-  end
 
   def pretty_name
     return "#{@first_name} #{@last_name}"
@@ -99,4 +148,5 @@ class Member
   def self.map_items(member_data)
     return member_data.map { |hash| Member.new(hash) }
   end
+
 end
