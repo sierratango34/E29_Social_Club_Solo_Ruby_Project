@@ -19,5 +19,6 @@ CREATE TABLE events (
 CREATE TABLE bookings (
   id SERIAL4 PRIMARY KEY,
   member_id INT4 REFERENCES members(id),
-  event_id INT4 REFERENCES events(id)
+  event_id INT4 REFERENCES events(id),
+  -- confirm BOOLEAN
 );

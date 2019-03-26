@@ -11,6 +11,7 @@ class Booking
     @id = options['id'].to_i if options['id']
     @member_id = options['member_id'].to_i
     @event_id = options['event_id'].to_i
+    @confirmed = false
   end
 
   #CRUD actions
@@ -75,6 +76,16 @@ class Booking
   end
 
   def confirm_booking
+    sql = 'UPDATE bookings
+    SET confirm = true
+    WHERE id = $1'
 
+    values = [@id]
+    bookings_confirmed_data = SqlRunner.run(sql, values)
+    bookings_confirmed = Booking.new(bookings_confirmed_data.first)
   end
+
+  sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
+  values = [@event_id]
+  Event.find().update_event_whateveritwas
 end
