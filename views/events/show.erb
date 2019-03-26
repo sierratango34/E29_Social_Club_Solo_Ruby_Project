@@ -20,7 +20,7 @@
     <th>Member</th>
     <th>Booking Reference</th>
   </tr>
-  <% for member in @members_and_id %>
+  <% for member in @event.members_attending_and_their_booking_ids %>
   <tr>
     <td><a href="/e29-social-club/members/<%=member['member_id'].to_i%>"><%=member['first_name']%> <%=member['last_name']%></a></td>
     <td><a href="/e29-social-club/bookings/<%=member['booking_id'].to_i%>"><%=member['booking_id']%></a></td>

@@ -19,8 +19,6 @@ end
 
 get '/e29-social-club/bookings/:id' do
   @booking = Booking.find(params[:id])
-  @member = Member.find(params[:id])
-  @event = Event.find(params[:id])
   erb(:'bookings/show')
 end
 
