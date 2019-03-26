@@ -5,19 +5,19 @@ require_relative('event')
 class Booking
 
   attr_reader :id
-  attr_accessor :member_id, :event_id
+  attr_accessor :member_id, :event_id, :confirmed
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @member_id = options['member_id'].to_i
     @event_id = options['event_id'].to_i
-    @confirmed = false
+    @confirmed = (options['confirmed'] == 't') ? true : false
   end
 
   #CRUD actions
   def save()
-    sql = 'INSERT INTO bookings (member_id, event_id) VALUES ($1, $2) RETURNING id'
-    values = [@member_id, @event_id]
+    sql = 'INSERT INTO bookings (member_id, event_id, confirmed) VALUES ($1, $2, $3) RETURNING id'
+    values = [@member_id, @event_id, @confirmed]
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
   end
@@ -77,15 +77,23 @@ class Booking
 
   def confirm_booking
     sql = 'UPDATE bookings
-    SET confirm = true
-    WHERE id = $1'
-
+    SET confirmed = true
+    WHERE id = $1
+    RETURNING *'
     values = [@id]
-    bookings_confirmed_data = SqlRunner.run(sql, values)
-    bookings_confirmed = Booking.new(bookings_confirmed_data.first)
+    bookings_confirmed_data = SqlRunner.run(sql, values).first
+    bookings_confirmed = Booking.new(bookings_confirmed_data)
   end
 
-  sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
-  values = [@event_id]
-  Event.find().update_event_whateveritwas
+  def confirmed_false
+    return "False"
+  end
+
+  def self.all_confirmed_bookings_for_attending_count
+    sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
+    values = [@event_id]
+    all_confirmed_bookings = SqlRunner.run(sql, values)
+    return all_confirmed_bookings.count
+  end
+
 end

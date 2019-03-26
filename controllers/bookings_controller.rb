@@ -23,8 +23,9 @@ get '/e29-social-club/bookings/:id' do
 end
 
 ####booking confirmed####
-get '/e29-social-club/bookings/:id/confirm' do
+post '/e29-social-club/bookings/:id/confirm' do
   @booking = Booking.find(params[:id])
+  @booking.confirm_booking
   erb(:'bookings/confirm')
 end
 #########################
