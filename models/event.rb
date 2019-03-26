@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require('pry')
+require('pry-byebug')
 
 class Event
 
@@ -76,7 +78,7 @@ class Event
   def increase_number_attending
     @number_attending += 1
   end
-  
+
   def self.map_items(event_data)
     return event_data.map { |hash| Event.new(hash) }
   end
