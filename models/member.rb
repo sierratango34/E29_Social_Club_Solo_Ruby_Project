@@ -88,7 +88,8 @@ class Member
   # end
 
   def increase_attendance_count
-    return @attendance_count +=1
+    @attendance_count += 1
+    return @attendance_count.to_i
   end
 
   def pretty_name

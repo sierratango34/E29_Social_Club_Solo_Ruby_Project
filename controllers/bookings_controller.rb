@@ -22,6 +22,13 @@ get '/e29-social-club/bookings/:id' do
   erb(:'bookings/show')
 end
 
+####booking confirmed####
+get '/e29-social-club/bookings/:id/confirm' do
+  @booking = Booking.find(params[:id])
+  erb(:'bookings/confirm')
+end
+#########################
+
 post '/e29-social-club/bookings' do
   @booking = Booking.new(params)
   @booking.save

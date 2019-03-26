@@ -74,23 +74,7 @@ class Booking
     return booking_data.map { |hash| Booking.new(hash) }
   end
 
-  # def self.all_members_available
-  #   sql = 'SELECT members.* FROM members
-  #   INNER JOIN bookings
-  #   ON bookings.member_id = members.id'
-  #
-  #   all_members_array = SqlRunner.run(sql)
-  #   hash_of_member_objects = all_members_array.map { |hash| Member.new(hash) }
-  #   return hash_of_member_objects
-  # end
-  #
-  # def self.all_events_available
-  #   sql = 'SELECT events.* FROM events
-  #   INNER JOIN bookings
-  #   ON bookings.event_id = events.id'
-  #
-  #   all_events_array = SqlRunner.run(sql)
-  #   hash_of_event_objects = all_events_array.map { |hash| Event.new(hash) }
-  #   return hash_of_event_objects
-  # end
+  def confirm_booking
+
+  end
 end

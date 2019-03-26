@@ -77,6 +77,7 @@ class Event
 
   def increase_number_attending
     @number_attending += 1
+    return @number_attending.to_i
   end
 
   def self.map_items(event_data)

@@ -8,6 +8,7 @@
 <p>Event: <a href="/e29-social-club/event/<%=@booking.event.id%>"><%=@booking.event.type%></a></p>
 
 <a href="/e29-social-club/bookings/<%=@booking.id%>/edit">Edit Booking Details</a>
+<a href="/e29-social-club/bookings/<%=@booking.id%>/confirm">Confirm Booking Details</a>
 
 <form action="/e29-social-club/bookings/<%=@booking.id%>/delete" method="post">
   <input type="submit" value="Delete Booking">
