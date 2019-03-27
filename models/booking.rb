@@ -126,11 +126,10 @@ class Booking
     return all_confirmed_bookings.count
   end
 
-  # def all_bookings_for_event
-  #   sql = 'SELECT * FROM bookings WHERE event_id = $1'
-  #   values = [@event_id]
-  #   all_confirmed_bookings = SqlRunner.run(sql, values)
-  #   p all_confirmed_bookings
-  #   return all_confirmed_bookings.count
-  # end
+  def get_member_object_id_from_id
+    sql = 'SELECT members.id FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.member_id = $1'
+    values = [@member_id]
+    the_member_id = SqlRunner.run(sql, values).first
+    return Member.find(the_member_id)
+  end
 end

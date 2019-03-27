@@ -1,7 +1,6 @@
 require('sinatra')
 require('sinatra/reloader') if development?
 require_relative('../models/member')
-set :views, Proc.new { File.join(root, "../views") }
 
 get '/e29-social-club/members' do #index
   @members = Member.all()
