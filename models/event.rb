@@ -131,6 +131,9 @@ class Event
     return bookings_data_array.count
   end
 
+  def has_spaces?
+    return all_bookings_count < @max_capacity
+  end
   # def is_all_bookings_count_less_than_max_capacity?
   #   sql = 'SELECT events.*
   #   FROM events

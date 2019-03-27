@@ -12,6 +12,7 @@ end
 
 get '/e29-social-club/bookings/new' do
   @booking = Booking.new(params)
+  @all_bookings = Booking.all()
   @all_members = Member.all()
   @all_events = Event.all()
   erb(:'bookings/new')
@@ -19,7 +20,6 @@ end
 
 get '/e29-social-club/bookings/:id' do
   @booking = Booking.find(params[:id])
-  # @event = Event.find(@booking.event_id)
   erb(:'bookings/show')
 end
 

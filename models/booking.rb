@@ -99,34 +99,32 @@ class Booking
   end
 
   def all_bookings_for_event
-    sql = 'SELECT * FROM bookings WHERE event_id = $1'
+    sql = 'SELECT * FROM bookings WHERE bookings.event_id = $1'
     values = [@event_id]
     all_confirmed_bookings = SqlRunner.run(sql, values)
     return all_confirmed_bookings
   end
 
   def all_bookings_for_event_count
-    sql = 'SELECT * FROM bookings WHERE event_id = $1'
+    sql = 'SELECT * FROM bookings WHERE bookings.event_id = $1'
     values = [@event_id]
     all_confirmed_bookings = SqlRunner.run(sql, values)
     return all_confirmed_bookings.count
   end
 
   def all_confirmed_bookings_for_event
-    sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
+    sql = 'SELECT * FROM bookings WHERE bookings.event_id = $1 AND bookings.confirmed = true'
     values = [@event_id]
     all_confirmed_bookings = SqlRunner.run(sql, values)
     return all_confirmed_bookings
   end
 
   def all_confirmed_bookings_for_event_count
-    sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
+    sql = 'SELECT * FROM bookings WHERE bookings.event_id = $1 AND bookings.confirmed = true'
     values = [@event_id]
     all_confirmed_bookings = SqlRunner.run(sql, values)
     return all_confirmed_bookings.count
   end
-
-
 
   # def all_bookings_for_event
   #   sql = 'SELECT * FROM bookings WHERE event_id = $1'

@@ -14,11 +14,11 @@
 
   Event:
   <select name="event_id">
-
-      <% for event in @all_events %>
+    <% for event in @all_events %>
+      <% if event.has_spaces? %>
         <option value="<%= event.id %>"><%= event.type %></option>
       <% end %>
-
+    <% end %>
   </select>
 
   <input type="submit" value="Add Booking">
