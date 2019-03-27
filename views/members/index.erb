@@ -2,13 +2,13 @@
 
 <nav>
   <a href="/e29-social-club/members/new">Add New Member</a>
-  <!-- <a href="/e29-social-club/members/index-first-name-alphabetical">Sort By First Name Ascending</a> -->
 </nav>
 
 <table>
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>All Bookings</th>
     <th>Confirmed Bookings</th>
     <th></th>
   </tr>
@@ -17,6 +17,7 @@
   <tr>
     <td><%= member.first_name %></td>
     <td><%= member.last_name %></td>
+    <td><%= member.all_bookings_count%></td>
     <td><%= member.all_confirmed_bookings_count %></td>
     <td><a href="/e29-social-club/members/<%= member.id %>">More Details</a></td>
   </tr>

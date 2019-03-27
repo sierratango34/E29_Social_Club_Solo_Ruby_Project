@@ -117,13 +117,11 @@ class Member
     FROM members
     INNER JOIN bookings
     ON bookings.member_id = members.id
-    WHERE members.id = $1 AND bookings.confirmed = true'
+    WHERE members.id = $1'
     values = [@id]
     members_bookings_data_array = SqlRunner.run(sql, values)
     return members_bookings_data_array.count
   end
-
-
 
   def change_all_members_array_to_member_objects
     sql = 'SELECT * FROM members'

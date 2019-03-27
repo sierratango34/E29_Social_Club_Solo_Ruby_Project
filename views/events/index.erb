@@ -7,15 +7,18 @@
 <table>
   <tr>
     <th>Type</th>
-    <th>Confirmed Bookings</th>
     <th>Max Capacity</th>
+    <th>All Bookings</th>
+    <th>Confirmed Bookings</th>
     <th></th>
   </tr>
+
   <% for event in @events %>
   <tr>
     <td><%=event.type%></td>
-    <td><%=event.confirmed_bookings_count%></td>
     <td><%=event.max_capacity%></td>
+    <td><%=event.all_bookings_count%></td>
+    <td><%=event.confirmed_bookings_count%></td>
     <td><a href="/e29-social-club/events/<%=event.id%>">More Details</a></td>
   </tr>
   <% end %>

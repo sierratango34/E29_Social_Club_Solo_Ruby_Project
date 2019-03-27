@@ -8,6 +8,7 @@
     <th>Booking Reference Number</th>
     <th>Member</th>
     <th>Event</th>
+    <th>Booking Status</th>
     <th></th>
   </tr>
 
@@ -16,6 +17,7 @@
     <td><%=booking.id%></td>
     <td><%=booking.member.pretty_name%></td>
     <td><%=booking.event.type%></td>
+    <td><%=booking.confirmed ? "Confirmed" : "Pending"%></td>
     <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
   </tr>
   <% end %>
