@@ -37,16 +37,6 @@ post '/e29-social-club/bookings' do
   erb(:'bookings/create')
 end
 
-# ###SAVE NEW BOOKING IF LESS THAN MAX CAPACITY ###
-# post '/e29-social-club/bookings' do
-#   @booking = Booking.new(params)
-#   @booking_event_id = @booking.event_id
-#   @event = Event.find(@booking_event_id)
-#   @booking.save_if_bookings_is_less_than_event_max_capacity(@event.id)
-#   erb(:'bookings/create')
-# end
-# #################################################
-
 get '/e29-social-club/bookings/:id/edit' do
   @booking = Booking.find(params[:id])
   @all_members = Member.all()
