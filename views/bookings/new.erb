@@ -14,9 +14,11 @@
 
   Event:
   <select name="event_id">
-    <% for event in @all_events %>
-      <option value="<%= event.id %>"><%= event.type %></option>
-    <% end %>
+
+      <% for event in @all_events %>
+        <option value="<%= event.id %>"><%= event.type %></option>
+      <% end %>
+
   </select>
 
   <input type="submit" value="Add Booking">

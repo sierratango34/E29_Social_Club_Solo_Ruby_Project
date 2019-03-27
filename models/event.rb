@@ -131,37 +131,37 @@ class Event
     return bookings_data_array.count
   end
 
-  def is_confirmed_bookings_count_less_than_max_capacity?
-    sql = 'SELECT events.*
-    FROM events
-    INNER JOIN bookings
-    ON bookings.event_id = events.id
-    WHERE events.id = $1 AND bookings.confirmed = true'
-    values = [@id]
-    bookings_data_array = SqlRunner.run(sql, values)
-
-    if bookings_data_array.count < @max_capacity
-      true
-    else
-      false
-    end
-  end
-
-  def is_all_bookings_count_less_than_max_capacity?
-    sql = 'SELECT events.*
-    FROM events
-    INNER JOIN bookings
-    ON bookings.event_id = events.id
-    WHERE events.id = $1 AND bookings.confirmed = true'
-    values = [@id]
-    bookings_data_array = SqlRunner.run(sql, values)
-
-    if bookings_data_array.count < @max_capacity
-      true
-    else
-      false
-    end
-  end
+  # def is_all_bookings_count_less_than_max_capacity?
+  #   sql = 'SELECT events.*
+  #   FROM events
+  #   INNER JOIN bookings
+  #   ON bookings.event_id = events.id
+  #   WHERE events.id = $1 AND bookings.confirmed == true'
+  #   values = [@id]
+  #   bookings_data_array = SqlRunner.run(sql, values)
+  #
+  #   if bookings_data_array.count < @max_capacity
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
+  #
+  # def is_confirmed_bookings_count_less_than_max_capacity?
+  #   sql = 'SELECT events.*
+  #   FROM events
+  #   INNER JOIN bookings
+  #   ON bookings.event_id = events.id
+  #   WHERE events.id = $1 AND bookings.confirmed = true'
+  #   values = [@id]
+  #   bookings_data_array = SqlRunner.run(sql, values)
+  #
+  #   if bookings_data_array.count < @max_capacity
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 
   def self.map_items(event_data)
     return event_data.map { |hash| Event.new(hash) }

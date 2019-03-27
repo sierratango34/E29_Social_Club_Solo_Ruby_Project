@@ -22,18 +22,18 @@ class Booking
     @id = results['id'].to_i
   end
 
-  def save_only_if_bookings_is_less_than_event_max_capacity(event_id)
-    @event_in_question = Event.find(event_id)
-    if @event_in_question.is_all_bookings_count_less_than_max_capacity? == true
-      sql = 'INSERT INTO bookings (member_id, event_id, confirmed) VALUES ($1, $2, $3) RETURNING id'
-      values = [@member_id, @event_id, @confirmed]
-      results = SqlRunner.run(sql, values).first
-      @id = results['id'].to_i
-      true
-    else
-      false
-    end
-  end
+  # def save_if_bookings_is_less_than_event_max_capacity(event_id)
+  #   @event_in_question = Event.find(event_id)
+  #   if @event_in_question.is_all_bookings_count_less_than_max_capacity? == true
+  #     sql = 'INSERT INTO bookings (member_id, event_id, confirmed) VALUES ($1, $2, $3) RETURNING id'
+  #     values = [@member_id, @event_id, @confirmed]
+  #     results = SqlRunner.run(sql, values).first
+  #     @id = results['id'].to_i
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 
   def self.all()
     sql = 'SELECT * FROM bookings'
@@ -98,12 +98,35 @@ class Booking
     bookings_confirmed = Booking.new(bookings_confirmed_data)
   end
 
+  def all_bookings_for_event
+    sql = 'SELECT * FROM bookings WHERE event_id = $1'
+    values = [@event_id]
+    all_confirmed_bookings = SqlRunner.run(sql, values)
+    return all_confirmed_bookings
+  end
+
+  def all_bookings_for_event_count
+    sql = 'SELECT * FROM bookings WHERE event_id = $1'
+    values = [@event_id]
+    all_confirmed_bookings = SqlRunner.run(sql, values)
+    return all_confirmed_bookings.count
+  end
+
   def all_confirmed_bookings_for_event
+    sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
+    values = [@event_id]
+    all_confirmed_bookings = SqlRunner.run(sql, values)
+    return all_confirmed_bookings
+  end
+
+  def all_confirmed_bookings_for_event_count
     sql = 'SELECT * FROM bookings WHERE event_id = $1 AND attending = true'
     values = [@event_id]
     all_confirmed_bookings = SqlRunner.run(sql, values)
     return all_confirmed_bookings.count
   end
+
+
 
   # def all_bookings_for_event
   #   sql = 'SELECT * FROM bookings WHERE event_id = $1'
