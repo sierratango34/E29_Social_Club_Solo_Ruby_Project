@@ -7,6 +7,11 @@ body {
   margin: 0;
 }
 
+nav a {
+  padding: 50px;
+  font-size: 24px;
+}
+
 a {
   color: #89001B;
   text-decoration: none;
@@ -47,15 +52,15 @@ footer {
   position: fixed;
   width: 100vw;
   bottom: 0;
-  padding: 1rem;
   background-color: #89001B;
   text-align: center;
 }
 
 .github {
-  height: 35px;
-  width: 35px;
-  clear: both;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  padding: 18px;
 }
 
 a.github, a:hover.github {
