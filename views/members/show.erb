@@ -13,18 +13,33 @@
   <input type="submit" value="Delete Member">
 </form>
 
-<% if @events_and_id != nil %>
-  <h3>Events Attending:</h3>
-    <table>
-        <tr>
-          <th>Event Name</th>
-          <th>Booking Reference</th>
-        </tr>
-      <% for event in @events_and_id %>
-        <tr>
-          <td><a href="/e29-social-club/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
-          <td><a href="/e29-social-club/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
-        </tr>
-      <% end %>
-    </table>
+
+<% for event in @events_and_id %>
+  <h3>All Bookings:</h3>
+  <table>
+    <tr>
+      <th>Event Name</th>
+      <th>Booking Reference</th>
+    </tr>
+
+    <tr>
+      <td><a href="/e29-social-club/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
+      <td><a href="/e29-social-club/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
+    </tr>
+  </table>
+<% end %>
+
+<% for event in @confirmed_events_and_id %>
+  <h3>Confirmed Bookings:</h3>
+  <table>
+    <tr>
+      <th>Event Name</th>
+      <th>Booking Reference</th>
+    </tr>
+
+    <tr>
+      <td><a href="/e29-social-club/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
+      <td><a href="/e29-social-club/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
+    </tr>
+  </table>
 <% end %>

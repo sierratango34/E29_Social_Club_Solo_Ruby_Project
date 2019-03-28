@@ -8,14 +8,12 @@ Event.delete_all
 
 member1 = Member.new({
   "first_name" => "Pim",
-  "last_name" => "Sritawan",
-  "attendance_count" => 4
+  "last_name" => "Sritawan"
   })
 member1.save
 
 event1 = Event.new({
   "type" => "Karaoke",
-  "number_attending" => 0,
   "max_capacity" => 25
   })
 event1.save

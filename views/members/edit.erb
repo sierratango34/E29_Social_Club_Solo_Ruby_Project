@@ -6,8 +6,7 @@
   <label for="last-name">Last Name:</label>
   <input type="text" name="last_name" value="<%= @member.last_name %>">
 
-  <label for="attendance-count">Attendance Count:</label>
-  <input type="text" name="attendance_count" value="<%= @member.attendance_count %>">
-
   <input type="submit" value="Update">
 </form>
+
+<a href="/e29-social-club/members/<%= @member.id %>">Back to Member</a>

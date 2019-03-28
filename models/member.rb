@@ -79,6 +79,19 @@ class Member
     return events_and_booking_refs
   end
 
+  def confirmed_events_attending_and_their_booking_ids
+    sql = 'SELECT events.type AS event_name, events.id AS event_id, bookings.id AS booking_id
+    FROM events
+    INNER JOIN bookings
+    ON bookings.event_id = events.id
+    INNER JOIN members
+    ON bookings.member_id = members.id
+    WHERE members.id = $1 AND bookings.confirmed = true'
+    values = [@id]
+    events_and_booking_refs = SqlRunner.run(sql, values)
+    return events_and_booking_refs
+  end
+
   def all_confirmed_bookings
     sql = 'SELECT members.*
     FROM members

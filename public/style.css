@@ -1,7 +1,74 @@
-h1 {
-  color: red;
+body {
+  text-decoration: none;
+  background-color: #FBFBFB;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  font-size: 22px;
+  margin: 0;
 }
 
-body {
-  background-color: red;
+a {
+  color: #89001B;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3F4459;
+  text-decoration: underline;
+}
+
+nav {
+  text-align: center;
+  font-size: 22px;
+  padding-bottom: 15px;
+}
+
+table {
+  display: flex;
+  justify-content: center;
+}
+
+td {
+  font-size: 18px;
+  padding: 3px;
+}
+
+th {
+  padding: 20px;
+  padding-bottom: 5px;
+  font-size: 22px;
+}
+
+li {
+  list-style-type: none;
+}
+
+footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  padding: 1rem;
+  background-color: #89001B;
+  text-align: center;
+}
+
+.github {
+  height: 35px;
+  width: 35px;
+  clear: both;
+}
+
+a.github, a:hover.github {
+  color: black;
+  color: black;
+  font-size: 14px;
+}
+
+input {
+  width: auto;
+  font-size: 20px;
+}
+
+.content {
+  margin-bottom: 50px;
 }
