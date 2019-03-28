@@ -18,10 +18,11 @@ get '/e29-social-club/bookings/new' do
 end
 
 ###BOOKING PAGE FROM MEMBER ID SHOW.ERB###
-get '/e29-social-club/bookings/new' do
+get '/e29-social-club/bookings/:member_id/new' do
   @booking = Booking.new(params)
   @all_bookings = Booking.all()
   @all_members = Member.all()
+  @member_in_question = Member.find(params[:member_id])
   @all_events = Event.all()
   erb(:'bookings/new')
 end

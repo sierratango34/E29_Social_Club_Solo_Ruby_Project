@@ -9,7 +9,7 @@
 <p>Confirmed Bookings: <%= @member.all_confirmed_bookings_count %></p>
 
 <p><a href="/e29-social-club/members/<%=@member.id%>/edit">Edit Member Details</a></p>
-<p><a href="/e29-social-club/bookings/new">Add New Booking</a></p>
+<p><a href="/e29-social-club/bookings/<%=@member.id%>/new">Add New Booking</a></p>
 <form action="/e29-social-club/members/<%=@member.id%>/delete" method="post">
   <input type="submit" value="Delete Member">
 </form>
