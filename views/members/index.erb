@@ -1,8 +1,7 @@
 <h2>All Members</h2>
 
-<nav>
-  <a href="/e29-social-club/members/new">Add New Member</a>
-</nav>
+<h4><a href="/e29-social-club/members/new">Add New Member</a></h4>
+
 
 <table>
   <tr>
@@ -20,6 +19,7 @@
     <td><%= member.all_bookings_count%></td>
     <td><%= member.all_confirmed_bookings_count %></td>
     <td><a href="/e29-social-club/members/<%= member.id %>">More Details</a></td>
+    <td><a href="/e29-social-club/bookings/<%= member.id %>/new">Add New Booking</a></td>
   </tr>
   <% end %>
 </table>

@@ -1,8 +1,7 @@
 <h1>Booking Reference Number: <%=@booking.id%></h1>
 
-<nav>
-  <a href="/e29-social-club/bookings">Bookings Home</a>
-</nav>
+<h4><a href="/e29-social-club/bookings">Bookings Home</a></h4>
+
 
 <p>Member: <a href="/e29-social-club/members/<%=@booking.member.id%>"><%=@booking.member.pretty_name%></a></p>
 <p>Event: <a href="/e29-social-club/event/<%=@booking.event.id%>"><%=@booking.event.type%></a></p>

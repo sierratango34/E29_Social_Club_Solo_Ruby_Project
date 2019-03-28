@@ -7,8 +7,20 @@ body {
   margin: 0;
 }
 
+.main-link {
+  font-size: 52px;
+}
+a.main-link {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover.main-link {
+  color: black;
+  text-decoration: none;
+}
+
 nav a {
-  padding: 50px;
   font-size: 24px;
 }
 
@@ -23,9 +35,12 @@ a:hover {
 }
 
 nav {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
   text-align: center;
   font-size: 22px;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
 }
 
 table {
@@ -54,19 +69,14 @@ footer {
   bottom: 0;
   background-color: #89001B;
   text-align: center;
+  margin-top: auto;
 }
 
 .github {
-  color: white;
+  color: #FBFBFB;
   text-align: center;
   font-size: 30px;
   padding: 18px;
-}
-
-a.github, a:hover.github {
-  color: black;
-  color: black;
-  font-size: 14px;
 }
 
 input {
@@ -76,4 +86,12 @@ input {
 
 .content {
   margin-bottom: 50px;
+}
+
+select {
+  font-size: 18px;
+}
+
+.form-**** input [type=submit] {
+  padding: 20px;
 }
