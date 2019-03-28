@@ -14,20 +14,20 @@
 </p>
 
 <div class="edit-confirm-delete">
-  <table>
-    <td>
+  <table class="booking-edit-confirm-delete">
+    <td class="booking-edit-confirm-delete">
       <button type="button" class="edit-button">
         <a class="edit-button-link" href="/e29-social-club/bookings/<%=@booking.id%>/edit">Edit Booking Details</a>
       </button>
     </td>
-    <td>
+    <td class="booking-edit-confirm-delete">
       <form action="/e29-social-club/bookings/<%=@booking.id%>/confirm" method="post">
         <input type="submit" value="Confirm Booking">
       </form>
     </td>
-    <td>
+    <td class="booking-edit-confirm-delete">
       <form action="/e29-social-club/bookings/<%=@booking.id%>/delete" method="post">
-        <input type="submit" value="Delete Booking">
+        <input type="submit" value="Delete Booking" class="delete-button">
       </form>
     </td>
     </table>

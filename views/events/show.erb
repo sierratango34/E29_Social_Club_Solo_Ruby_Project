@@ -7,20 +7,20 @@
 
 
 <div class="event-edit-confirm-delete">
-  <table>
-    <td>
+  <table class="event-edit-confirm-delete">
+    <td class="event-edit-confirm-delete">
       <button type="button" class="edit-button">
         <a class="edit-button-link" href="/e29-social-club/events/<%=@event.id%>/edit">Edit Event</a>
       </button>
     </td>
-    <td>
+    <td class="event-edit-confirm-delete">
       <button type="button" class="add-button">
         <a class="add-button-link" href="/e29-social-club/events/new">Add New Event</a>
       </button>
     </td>
-    <td>
+    <td class="event-edit-confirm-delete">
       <form action="/e29-social-club/events/<%=@event.id%>/delete" method="post">
-        <input type="submit" value="Delete Event">
+        <input type="submit" value="Delete Event" class="delete-button">
       </form>
     </td>
   </table>
@@ -28,7 +28,7 @@
 
 <div class="bookings-table">
 <% if @event.members_attending_and_their_booking_ids.count != 0%>
-<table>
+<table class="all-bookings">
   <tr>
     <th class="table-head" colspan="2">All Bookings</th>
   </tr>
@@ -48,7 +48,7 @@
 
 <% if @event.confirmed_members_attending_and_their_booking_ids.count != 0 %>
 
-<table>
+<table class="confirmed-bookings">
   <tr>
     <th class="table-head" colspan="2">Confirmed Bookings</th>
   </tr>

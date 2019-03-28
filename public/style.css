@@ -32,7 +32,7 @@ a {
 
 a:hover {
   color: #3F4459;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 nav {
@@ -48,19 +48,55 @@ table {
   display: flex;
   justify-content: center;
   border-spacing: 10px;
+  border-collapse: collapse;
+}
+
+table tr:nth-child(odd) {
+  background-color: #EDEDED;
+}
+
+td.event-edit-confirm-delete, td.member-edit-add-delete, td.booking-edit-confirm-delete {
+  background-color: #FBFBFB;
+  padding-bottom: 20px;
+}
+
+td.new-booking-nav {
+  background-color: #FBFBFB;
+  padding-bottom: 20px;
+  font-size: 22px;
+}
+
+table.member-edit-add-delete {
+  background-color: #FBFBFB;
+  padding-bottom: 20px;
+}
+
+table tr {
+  height: 40px;
+}
+
+table.confirmed-bookings {
+  padding: 0px 10px;
+}
+
+table.all-bookings {
+  padding: 0px 10px;
 }
 
 td {
   font-size: 18px;
-  padding: 3px;
+  padding: 0px 15px;
 }
 
 th {
   font-size: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 li {
   list-style-type: none;
+  padding: 3px;
 }
 
 footer {
@@ -93,7 +129,7 @@ select {
 }
 
 input[type=text] {
-    padding: 5px;
+    padding: 2px;
     border: 2px solid black;
     border-radius: 5px;
 }
@@ -103,29 +139,34 @@ input[type=text]:focus {
 }
 
 input[type=submit], .add-button, .edit-button  {
-    padding-left: 10px;
-    padding-right: 10px;
-    background: white ;
-    border: 1px solid black;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+input.delete-button {
+  background-color: #89001B;
+  color: #FBFBFB;
 }
 
 a.edit-button-link, a.add-button-link {
   color: black;
   text-decoration: none;
+  background-color: white;
 }
 
 input[type=number] {
-    padding: 5px;
+    padding: 2px;
     background: white ;
     border: 2px solid black ;
     cursor: pointer;
     border-radius: 5px;
 }
 
-.new-booking {
+.new-booking .add-button {
   padding: 5px;
   background: white ;
   border: 2px solid black ;
@@ -144,8 +185,4 @@ input[type=number] {
 th.table-head {
   align-items: center;
   font-size: 28px;
-}
-
-.edit-confirm-delete, .event-edit-confirm-delete, .edit-add-delete {
-
 }

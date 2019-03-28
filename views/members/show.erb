@@ -8,28 +8,28 @@
 <p>Confirmed Bookings: <%= @member.all_confirmed_bookings_count %></p>
 
 <div class="edit-add-delete">
-  <table>
-    <td>
+  <table class="member-edit-add-delete">
+    <td class="member-edit-add-delete">
       <button type="button" class="edit-button">
         <a class="edit-button-link" href="/e29-social-club/members/<%=@member.id%>/edit">Edit Member Details</a>
       </button>
     </td>
-    <td>
+    <td class="member-edit-add-delete">
       <button type="button" class="add-button">
         <a class="add-button-link" href="/e29-social-club/bookings/<%=@member.id%>/new">Add New Booking</a>
       </button>
     </td>
-    <td>
+    <td class="member-edit-add-delete">
       <form action="/e29-social-club/members/<%=@member.id%>/delete" method="post">
-        <input type="submit" value="Delete Member">
+        <input type="submit" value="Delete Member" class="delete-button">
       </form>
-    <td/>
+    </td>
   </table>
 </div>
 
 <div class="bookings-table" colspan="2">
 <% if @events_and_id.count != 0 %>
-<table>
+<table class="all-bookings">
   <tr>
     <th class="table-head" colspan="2">All Bookings</th>
   </tr>
@@ -47,7 +47,7 @@
 <% end%>
 
 <% if @confirmed_events_and_id.count != 0 %>
-<table>
+<table class="confirmed-bookings">
   <tr>
     <th class="table-head" colspan="2">Confirmed Bookings</th>
   </tr>
