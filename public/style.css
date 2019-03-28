@@ -1,28 +1,6 @@
-body {
-  text-decoration: none;
-  background-color: #FBFBFB;
-  font-family: Roboto, sans-serif;
-  text-align: center;
-  font-size: 22px;
-  margin: 0;
-}
-
-.main-link {
-  font-size: 52px;
-}
-
 a.main-link {
   color: black;
   text-decoration: none;
-}
-
-a:hover.main-link {
-  color: black;
-  text-decoration: none;
-}
-
-nav a {
-  font-size: 24px;
 }
 
 a {
@@ -35,6 +13,77 @@ a:hover {
   text-decoration: none;
 }
 
+a:hover.main-link {
+  color: black;
+  text-decoration: none;
+}
+
+a.edit-button-link, a.add-button-link {
+  color: black;
+  text-decoration: none;
+  background-color: white;
+}
+
+body {
+  text-decoration: none;
+  background-color: #FBFBFB;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  font-size: 22px;
+  margin: 0;
+}
+
+footer {
+  width: 100vw;
+  background-color: #89001B;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  min-height: 50px;
+}
+
+input {
+  width: auto;
+  font-size: 20px;
+}
+
+input.delete-button {
+  background-color: #89001B;
+  color: #FBFBFB;
+}
+
+input[type=number] {
+    padding: 2px;
+    background: white ;
+    border: 2px solid black ;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type=submit], .add-button, .edit-button  {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+input[type=text] {
+  padding: 2px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+input[type=text]:focus {
+  border-color: #89001B;
+}
+
+li {
+  list-style-type: none;
+  padding: 3px;
+}
+
 nav {
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -44,6 +93,14 @@ nav {
   padding-bottom: 20px;
 }
 
+nav a {
+  font-size: 24px;
+}
+
+select {
+  font-size: 18px;
+}
+
 table {
   display: flex;
   justify-content: center;
@@ -51,8 +108,26 @@ table {
   border-collapse: collapse;
 }
 
+table.confirmed-bookings, table.all-bookings {
+  padding: 0px 10px;
+}
+
+table.member-edit-add-delete {
+  background-color: #FBFBFB;
+  padding-bottom: 20px;
+}
+
+table tr {
+  height: 40px;
+}
+
 table tr:nth-child(odd) {
   background-color: #EDEDED;
+}
+
+td {
+  font-size: 18px;
+  padding: 0px 15px;
 }
 
 td.event-edit-confirm-delete, td.member-edit-add-delete, td.booking-edit-confirm-delete {
@@ -66,46 +141,19 @@ td.new-booking-nav {
   font-size: 22px;
 }
 
-table.member-edit-add-delete {
-  background-color: #FBFBFB;
-  padding-bottom: 20px;
-}
-
-table tr {
-  height: 40px;
-}
-
-table.confirmed-bookings {
-  padding: 0px 10px;
-}
-
-table.all-bookings {
-  padding: 0px 10px;
-}
-
-td {
-  font-size: 18px;
-  padding: 0px 15px;
-}
-
 th {
   font-size: 22px;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-li {
-  list-style-type: none;
-  padding: 3px;
+th.table-head {
+  align-items: center;
+  font-size: 28px;
 }
 
-footer {
-  width: 100vw;
-  background-color: #89001B;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  min-height: 50px;
+.content {
+  margin-bottom: 120px;
 }
 
 .github {
@@ -115,55 +163,8 @@ footer {
   padding: 18px;
 }
 
-input {
-  width: auto;
-  font-size: 20px;
-}
-
-.content {
-  margin-bottom: 120px;
-}
-
-select {
-  font-size: 18px;
-}
-
-input[type=text] {
-    padding: 2px;
-    border: 2px solid black;
-    border-radius: 5px;
-}
-
-input[type=text]:focus {
-    border-color: #89001B;
-}
-
-input[type=submit], .add-button, .edit-button  {
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid black;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 20px;
-}
-
-input.delete-button {
-  background-color: #89001B;
-  color: #FBFBFB;
-}
-
-a.edit-button-link, a.add-button-link {
-  color: black;
-  text-decoration: none;
-  background-color: white;
-}
-
-input[type=number] {
-    padding: 2px;
-    background: white ;
-    border: 2px solid black ;
-    cursor: pointer;
-    border-radius: 5px;
+.main-link {
+  font-size: 52px;
 }
 
 .new-booking .add-button {
@@ -180,9 +181,4 @@ input[type=number] {
   justify-content: space-between;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-th.table-head {
-  align-items: center;
-  font-size: 28px;
 }
