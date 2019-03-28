@@ -7,11 +7,6 @@ get '/e29-social-club/members' do #index
   erb(:'members/index')
 end
 
-# get '/e29-social-club/members-first-name-alphabetical' do
-#   @members = Member.all_alphabetical_by_first_name
-#   erb(:'members/index')
-# end
-
 get '/e29-social-club/members/new' do #new
   erb(:'members/new')
 end
@@ -27,7 +22,7 @@ end
 post '/e29-social-club/members' do #create
   @member = Member.new(params)
   @member.save()
-  erb(:'members/create')
+  redirect('/e29-social-club/members')
 end
 
 get '/e29-social-club/members/:id/edit' do #edit

@@ -17,6 +17,16 @@ get '/e29-social-club/bookings/new' do
   erb(:'bookings/new')
 end
 
+###BOOKING PAGE FROM MEMBER ID SHOW.ERB###
+get '/e29-social-club/bookings/new' do
+  @booking = Booking.new(params)
+  @all_bookings = Booking.all()
+  @all_members = Member.all()
+  @all_events = Event.all()
+  erb(:'bookings/new')
+end
+##########################################
+
 get '/e29-social-club/bookings/:id' do
   @booking = Booking.find(params[:id])
   erb(:'bookings/show')
@@ -33,7 +43,7 @@ end
 post '/e29-social-club/bookings' do
   @booking = Booking.new(params)
   @booking.save
-  erb(:'bookings/create')
+  redirect('/e29-social-club/bookings')
 end
 
 get '/e29-social-club/bookings/:id/edit' do

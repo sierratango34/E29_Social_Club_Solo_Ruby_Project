@@ -19,7 +19,7 @@ end
 post '/e29-social-club/events' do
   @event = Event.new(params)
   @event.save
-  erb(:'events/create')
+  redirect('/e29-social-club/events')
 end
 
 get '/e29-social-club/events/:id/edit' do
