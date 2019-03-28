@@ -8,7 +8,7 @@
     <th>Member</th>
     <th>Event</th>
     <th>Booking Status</th>
-    <th></th>
+    <th colspan="2"></th>
   </tr>
 
   <% for booking in @bookings %>
@@ -18,6 +18,13 @@
     <td><%=booking.event.type%></td>
     <td><%=booking.confirmed ? "Confirmed" : "Pending"%></td>
     <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
+    <td>
+      <% if booking.confirmed == false %>
+        <form action="/e29-social-club/bookings/<%=booking.id%>/confirm" method="post">
+          <input type="submit" value="Confirm Booking">
+        </form>
+      <% end %>
+    </td>
   </tr>
   <% end %>
 </table>
