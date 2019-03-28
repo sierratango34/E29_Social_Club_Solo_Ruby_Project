@@ -10,6 +10,7 @@ body {
 .main-link {
   font-size: 52px;
 }
+
 a.main-link {
   color: black;
   text-decoration: none;
@@ -46,6 +47,7 @@ nav {
 table {
   display: flex;
   justify-content: center;
+  border-spacing: 10px;
 }
 
 td {
@@ -54,8 +56,6 @@ td {
 }
 
 th {
-  padding: 20px;
-  padding-bottom: 5px;
   font-size: 22px;
 }
 
@@ -64,12 +64,12 @@ li {
 }
 
 footer {
-  position: fixed;
   width: 100vw;
-  bottom: 0;
   background-color: #89001B;
   text-align: center;
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  min-height: 50px;
 }
 
 .github {
@@ -85,13 +85,62 @@ input {
 }
 
 .content {
-  margin-bottom: 50px;
+  margin-bottom: 120px;
 }
 
 select {
   font-size: 18px;
 }
 
-.form-**** input [type=submit] {
-  padding: 20px;
+input[type=text] {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+input[type=text]:focus {
+    border-color: #89001B;
+}
+
+input[type=submit], .add-button, .edit-button  {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: white ;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+input[type=number] {
+    padding: 5px;
+    background: white ;
+    border: 2px solid black ;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.new-booking {
+  padding: 5px;
+  background: white ;
+  border: 2px solid black ;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.bookings-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+th.table-head {
+  align-items: center;
+  font-size: 28px;
+}
+
+.edit-confirm-delete, .event-edit-confirm-delete, .edit-add-delete {
+
 }

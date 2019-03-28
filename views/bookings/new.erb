@@ -6,14 +6,14 @@
 
 <form action="/e29-social-club/bookings" method="post">
   Member:
-  <select name="member_id">
+  <select name="member_id" class="new-booking" >
     <% for member in @all_members %>
       <option value="<%= member.id%>"<%= "selected" if @member_in_question != nil && member.id == @member_in_question.id %>><%= member.pretty_name %></option>
     <% end %>
   </select>
 
   Event:
-  <select name="event_id">
+  <select name="event_id" class="new-booking" >
     <% for event in @all_events %>
       <% if event.has_spaces? %>
         <option value="<%= event.id %>"><%= event.type %></option>
