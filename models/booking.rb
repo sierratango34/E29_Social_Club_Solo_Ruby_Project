@@ -22,19 +22,6 @@ class Booking
     @id = results['id'].to_i
   end
 
-  # def save_if_bookings_is_less_than_event_max_capacity(event_id)
-  #   @event_in_question = Event.find(event_id)
-  #   if @event_in_question.is_all_bookings_count_less_than_max_capacity? == true
-  #     sql = 'INSERT INTO bookings (member_id, event_id, confirmed) VALUES ($1, $2, $3) RETURNING id'
-  #     values = [@member_id, @event_id, @confirmed]
-  #     results = SqlRunner.run(sql, values).first
-  #     @id = results['id'].to_i
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
-
   def self.all()
     sql = 'SELECT * FROM bookings'
     booking_data = SqlRunner.run(sql)
