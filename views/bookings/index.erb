@@ -14,8 +14,8 @@
   <% for booking in @bookings %>
   <tr>
     <td><%=booking.id%></td>
-    <td><%=booking.member.pretty_name%></td>
-    <td><%=booking.event.type%></td>
+    <td><a href="/e29-social-club/members/<%=booking.member.id%>"><%=booking.member.pretty_name%></a></td>
+    <td><a href="/e29-social-club/events/<%=booking.event.id%>"><%=booking.event.type%></a></td>
     <td><%=booking.confirmed ? "Confirmed" : "Pending"%></td>
     <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
     <td>
