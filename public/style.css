@@ -108,7 +108,7 @@ table {
   border-collapse: collapse;
 }
 
-table.confirmed-bookings, table.all-bookings {
+table.confirmed-bookings, table.all-bookings, td.unconfirmed-bookings {
   padding: 0px 10px;
 }
 

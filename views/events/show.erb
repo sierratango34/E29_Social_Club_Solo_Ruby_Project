@@ -64,4 +64,22 @@
   <% end %>
 </table>
 <% end %>
+
+<% if @event.unconfirmed_members_attending_and_their_booking_ids.count != 0 %>
+<table class="unconfirmed-bookings">
+  <tr>
+    <th class="table-head" colspan="2">Unconfirmed Bookings</th>
+  </tr>
+  <tr>
+    <td>Booking Reference</td>
+    <td>Member</td>
+  </tr>
+  <% for member in @event.unconfirmed_members_attending_and_their_booking_ids %>
+  <tr>
+    <td><a href="/e29-social-club/bookings/<%=member['booking_id']%>"><%= member['booking_id'].to_i%></a></td>
+    <td><a href="/e29-social-club/members/<%=member['member_id']%>"><%= member['first_name']%> <%= member['last_name']%></a></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
 </div>

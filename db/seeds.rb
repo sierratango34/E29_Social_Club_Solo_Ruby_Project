@@ -169,8 +169,8 @@ member27 = Member.new({
 member27.save
 
 member28 = Member.new({
-  "first_name" => "Roro",
-  "last_name" => "Tarantino"
+  "first_name" => "Rory",
+  "last_name" => "MacGregor"
   })
 member28.save
 
@@ -193,31 +193,6 @@ event1 = Event.new({
   "max_capacity" => 31
   })
 event1.save
-
-event2 = Event.new({
-  "type" => "Yachting",
-  "max_capacity" => 3
-  })
-event2.save
-
-event3 = Event.new({
-  "type" => "Farm Experience",
-  "max_capacity" => 5
-  })
-event3.save
-
-
-event4 = Event.new({
-  "type" => "Alpaca Walking",
-  "max_capacity" => 3
-  })
-event4.save
-
-event5 = Event.new({
-  "type" => "Clay Pigeon Shooting",
-  "max_capacity" => 5
-  })
-event5.save
 
 ##########BOOKING########################################################
 
