@@ -5,19 +5,20 @@ require_relative('event')
 class Booking
 
   attr_reader :id
-  attr_accessor :member_id, :event_id, :confirmed
+  attr_accessor :member_id, :event_id, :confirmed, :paid
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @member_id = options['member_id'].to_i
     @event_id = options['event_id'].to_i
     @confirmed = (options['confirmed'] == 't') ? true : false
+    @paid = (options['paid'] == 't') ? true : false
   end
 
   #CRUD actions
   def save()
-    sql = 'INSERT INTO bookings (member_id, event_id, confirmed) VALUES ($1, $2, $3) RETURNING id'
-    values = [@member_id, @event_id, @confirmed]
+    sql = 'INSERT INTO bookings (member_id, event_id, confirmed, paid) VALUES ($1, $2, $3, $4) RETURNING id'
+    values = [@member_id, @event_id, @confirmed, @paid]
     results = SqlRunner.run(sql, values).first
     @id = results['id'].to_i
   end
@@ -30,8 +31,8 @@ class Booking
   end
 
   def update()
-    sql = 'UPDATE bookings SET (member_id, event_id) = ($1, $2) WHERE id = $3'
-    values = [@member_id, @event_id, @id]
+    sql = 'UPDATE bookings SET (member_id, event_id, paid) = ($1, $2, $3) WHERE id = $4'
+    values = [@member_id, @event_id, @paid, @id]
     results = SqlRunner.run(sql, values)
   end
 
@@ -118,5 +119,29 @@ class Booking
     values = [@member_id]
     the_member_id = SqlRunner.run(sql, values).first
     return Member.find(the_member_id)
+  end
+
+  def confirm_payment
+    sql = 'UPDATE bookings
+    SET paid = true
+    WHERE id = $1
+    RETURNING *'
+    values = [@id]
+    bookings_confirmed_data = SqlRunner.run(sql, values).first
+    bookings_confirmed = Booking.new(bookings_confirmed_data)
+  end
+
+  def get_all_paid_bookings
+    sql = 'SELECT * FROM bookings WHERE bookings.paid = true AND bookings.confirmed = true WHERE bookings.event_id = $1'
+    values = [@event_id]
+    paid_bookings = SqlRunner.run(sql, values)
+    return paid_bookings
+  end
+
+  def get_all_paid_bookings_count
+    sql = 'SELECT * FROM bookings WHERE bookings.paid = true AND bookings.confirmed = true WHERE bookings.event_id = $1'
+    values = [@event_id]
+    paid_bookings = SqlRunner.run(sql, values)
+    return paid_bookings.count
   end
 end

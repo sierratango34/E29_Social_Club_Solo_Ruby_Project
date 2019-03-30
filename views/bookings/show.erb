@@ -5,11 +5,18 @@
 
 <p>Member: <a href="/e29-social-club/members/<%=@booking.member.id%>"><%=@booking.member.pretty_name%></a></p>
 <p>Event: <a href="/e29-social-club/event/<%=@booking.event.id%>"><%=@booking.event.type%></a></p>
-<p>Status:
+<p>Booking Status:
   <% if @booking.confirmed != true %>
     Pending
   <% else %>
     Confirmed
+  <% end %>
+</p>
+<p>Payment:
+  <% if @booking.paid != true %>
+    Unsettled
+  <% else %>
+    Paid
   <% end %>
 </p>
 
@@ -20,11 +27,20 @@
         <a class="edit-button-link" href="/e29-social-club/bookings/<%=@booking.id%>/edit">Edit Booking Details</a>
       </button>
     </td>
+    <% if @booking.confirmed != true %>
     <td class="booking-edit-confirm-delete">
       <form action="/e29-social-club/bookings/<%=@booking.id%>/confirm" method="post">
         <input type="submit" value="Confirm Booking">
       </form>
     </td>
+    <% end %>
+    <% if @booking.confirmed != false %>
+    <td class=booking-edit-confirm-delete>
+      <form action="/e29-social-club/bookings/<%=@booking.id%>/paid" method="post">
+        <input type="submit" value="Confirm Payment">
+      </form>
+    </td>
+    <% end %>
     <td class="booking-edit-confirm-delete">
       <form action="/e29-social-club/bookings/<%=@booking.id%>/delete" method="post">
         <input type="submit" value="Delete Booking" class="delete-button">

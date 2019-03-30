@@ -37,7 +37,15 @@ end
 post '/e29-social-club/bookings/:id/confirm' do
   @booking = Booking.find(params[:id])
   @booking.confirm_booking
-  erb(:'bookings/confirm')
+  redirect('e29-social-club/bookings')
+end
+#########################
+
+####booking paid#########
+post '/e29-social-club/bookings/:id/paid' do
+  @booking = Booking.find(params[:id])
+  @booking.confirm_payment
+  redirect('e29-social-club/bookings')
 end
 #########################
 

@@ -9,7 +9,10 @@
     <th>Member</th>
     <th>Event</th>
     <th>Booking Status</th>
-    <th colspan="2"></th>
+    <th></th>
+    <th>Payment</th>
+    <th></th>
+    <th></th>
   </tr>
 
   <% for booking in @bookings %>
@@ -18,7 +21,6 @@
     <td><a href="/e29-social-club/members/<%=booking.member.id%>"><%=booking.member.pretty_name%></a></td>
     <td><a href="/e29-social-club/events/<%=booking.event.id%>"><%=booking.event.type%></a></td>
     <td><%=booking.confirmed ? "Confirmed" : "Pending"%></td>
-    <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
     <td>
       <% if booking.confirmed == false %>
         <form action="/e29-social-club/bookings/<%=booking.id%>/confirm" method="post">
@@ -26,6 +28,15 @@
         </form>
       <% end %>
     </td>
+    <td><%=booking.paid ? "Paid" : "Unsettled" %></td>
+    <td>
+      <% if (booking.paid == false) && (booking.confirmed == true) %>
+      <form action="/e29-social-club/bookings/<%=booking.id%>/paid" method="post">
+        <input type="submit" value="Payment Received">
+      </form>
+      <% end %>
+    </td>
+    <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
   </tr>
   <% end %>
 </table>
