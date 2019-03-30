@@ -4,6 +4,8 @@ require_relative('../models/member')
 
 get '/e29-social-club/members' do #index
   @members = Member.all()
+  @members = Member.search_by_name(params['first_name']) if (params['first_name'])
+  @members = Member.search_by_name(params['last_name']) if (params['last_name'])
   erb(:'members/index')
 end
 

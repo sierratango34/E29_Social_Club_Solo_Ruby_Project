@@ -52,18 +52,18 @@ class Member
     return result
   end
 
-  def events_attending
-    sql = 'SELECT events.* FROM events INNER JOIN bookings ON bookings.event_id = events.id WHERE bookings.member_id = $1'
-    values = [@id]
-    event_data = SqlRunner.run(sql, values)
-    return event_data.map { |hash| Event.new(hash)  }
-  end
-
   def bookings
     sql = 'SELECT * FROM bookings WHERE bookings.member_id = $1'
     values = [@id]
     booking_data = SqlRunner.run(sql, values)
     return booking_data.map { |hash| Booking.new(hash) }
+  end
+
+  def events_attending
+    sql = 'SELECT events.* FROM events INNER JOIN bookings ON bookings.event_id = events.id WHERE bookings.member_id = $1'
+    values = [@id]
+    event_data = SqlRunner.run(sql, values)
+    return event_data.map { |hash| Event.new(hash)  }
   end
 
   def events_attending_and_their_booking_ids
@@ -136,21 +136,31 @@ class Member
     return members_bookings_data_array.count
   end
 
-  def change_all_members_array_to_member_objects
-    sql = 'SELECT * FROM members'
-    member_data = SqlRunner.run(sql)
-    @members = map_items(member_data)
-    for member in @members
-      return member
+  # search by first or last name
+  def self.search_by_name(name)
+    searched_array = name.downcase.split(' ')
+    members = []
+    for string in searched_array
+      sql = 'SELECT *
+      FROM members
+      WHERE LOWER(first_name) LIKE $1
+      OR LOWER(last_name) LIKE $1'
+      values = ["%" + string + "%"]
+      members_hashes = SqlRunner.run(sql, values)
+      members << map_items(members_hashes)
     end
-  end
+    members = members.flatten.uniq{ |member| member.id  }
 
-  # def self.all_alphabetical_by_first_name
-  #   sql = 'SELECT * FROM members ORDER BY first_name'
-  #   member_data = SqlRunner.run(sql)
-  #   members_first_name_alphabetical = map_items(member_data)
-  #   return members_first_name_alphabetical
-  # end
+    result = []
+
+    for member in members
+      if searched_array.include?(member.first_name.downcase) && searched_array.include?(member.last_name.downcase)
+        result << member
+      end
+    end
+    return members if result.empty?
+    return result
+  end
 
   def pretty_name
     return "#{@first_name} #{@last_name}"

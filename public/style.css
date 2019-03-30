@@ -108,7 +108,7 @@ table {
   border-collapse: collapse;
 }
 
-table.confirmed-bookings, table.all-bookings, td.unconfirmed-bookings {
+table.confirmed-bookings, table.all-bookings, table.unconfirmed-bookings {
   padding: 0px 10px;
 }
 
@@ -181,4 +181,8 @@ th.table-head {
   justify-content: space-between;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.search-bar {
+  margin: 0 0 10px 0;
 }
