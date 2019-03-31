@@ -144,4 +144,19 @@ class Booking
     paid_bookings = SqlRunner.run(sql, values)
     return paid_bookings.count
   end
+
+  def self.sort_by_member_first_name
+    sql = 'SELECT members.*
+    FROM bookings
+    INNER JOIN members
+    ON bookings.member_id = members.id
+    ORDER BY members.first_name'
+    ordered_by_first_name = SqlRunner.run(sql)
+
+    for member in ordered_by_first_name
+      return Member.new(member)
+    end
+  end
+
+
 end
