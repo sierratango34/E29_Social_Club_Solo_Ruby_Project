@@ -144,6 +144,28 @@ class Event
     return bookings_data_array.count
   end
 
+  def self.search_by_type(data)
+    searched_event = data.downcase.split(' ')
+    events = []
+    for string in searched_event
+      sql = 'SELECT *
+      FROM events
+      WHERE LOWER(type) LIKE $1'
+      values = ['%' + string + '%']
+      events_hash = SqlRunner.run(sql, values)
+      events << map_items(events_hash)
+    end
+      events = events.flatten.uniq{ |event| event.id }
+      result = []
+    for event in events
+      if searched_event.include?(event.type.downcase)
+        result << event
+      end
+    end
+    return events if result.empty?
+    return result
+  end
+
   def has_spaces?
     return all_bookings_count < @max_capacity
   end

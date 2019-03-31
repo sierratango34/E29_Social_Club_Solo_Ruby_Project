@@ -4,6 +4,7 @@ require_relative('../models/event')
 
 get '/e29-social-club/events' do
   @events = Event.all()
+  @events = Event.search_by_type(params['type']) if (params['type'])
   erb(:'events/index')
 end
 
