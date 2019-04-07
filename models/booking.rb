@@ -158,5 +158,4 @@ class Booking
     end
   end
 
-
 end
