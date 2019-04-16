@@ -1,9 +1,9 @@
 <h2>All Events</h2>
 
-<h4><a href="/e29-social-club/events/new">Add New Event</a></h4>
+<h4><a href="/events/new">Add New Event</a></h4>
 
 <div class="search-bar">
-  <form action="/e29-social-club/events" method="get">
+  <form action="/events" method="get">
     <input class="search-bar" type="text" name="type">
     <input type="submit" name="search" value="Search for Event">
   </form>
@@ -24,7 +24,7 @@
     <td><%=event.max_capacity%></td>
     <td><%=event.all_bookings_count%></td>
     <td><%=event.confirmed_bookings_count%></td>
-    <td><a href="/e29-social-club/events/<%=event.id%>">More Details</a></td>
+    <td><a href="/events/<%=event.id%>">More Details</a></td>
   </tr>
   <% end %>
 

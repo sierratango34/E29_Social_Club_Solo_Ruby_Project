@@ -1,6 +1,6 @@
 <h2>All Bookings</h2>
 
-<h4><a href="/e29-social-club/bookings/new">Add New Booking</a></h4>
+<h4><a href="/bookings/new">Add New Booking</a></h4>
 
 <table id="bookings">
   <tr>
@@ -18,12 +18,12 @@
   <% for booking in @bookings %>
   <tr>
     <td><%=booking.id%></td>
-    <td><a href="/e29-social-club/members/<%=booking.member.id%>"><%=booking.member.pretty_name%></a></td>
-    <td><a href="/e29-social-club/events/<%=booking.event.id%>"><%=booking.event.type%></a></td>
+    <td><a href="/members/<%=booking.member.id%>"><%=booking.member.pretty_name%></a></td>
+    <td><a href="/events/<%=booking.event.id%>"><%=booking.event.type%></a></td>
     <td><%=booking.confirmed ? "Confirmed" : "Pending"%></td>
     <td>
       <% if booking.confirmed == false %>
-        <form action="/e29-social-club/bookings/<%=booking.id%>/confirm" method="post">
+        <form action="/bookings/<%=booking.id%>/confirm" method="post">
           <input type="submit" value="Confirm Booking">
         </form>
       <% end %>
@@ -31,12 +31,12 @@
     <td><%=booking.paid ? "Paid" : "Unsettled" %></td>
     <td>
       <% if (booking.paid == false) && (booking.confirmed == true) %>
-      <form action="/e29-social-club/bookings/<%=booking.id%>/paid" method="post">
+      <form action="/bookings/<%=booking.id%>/paid" method="post">
         <input type="submit" value="Payment Received">
       </form>
       <% end %>
     </td>
-    <td><a href="/e29-social-club/bookings/<%=booking.id%>">More Details</a></td>
+    <td><a href="/bookings/<%=booking.id%>">More Details</a></td>
   </tr>
   <% end %>
 </table>

@@ -1,7 +1,7 @@
 <h1>Edit Event</h1>
-<h4><a href="/e29-social-club/events">Events Home</a></h4>
+<h4><a href="/events">Events Home</a></h4>
 
-<form action="/e29-social-club/members/<%= @member.id %>" method="post">
+<form action="/members/<%= @member.id %>" method="post">
 
   <label for="first-name">First Name:</label>
   <input type="text" name="first_name" value="<%= @member.first_name %>">
@@ -12,4 +12,4 @@
   <input type="submit" value="Update">
 </form>
 
-<a href="/e29-social-club/members/<%= @member.id %>">Back to Member</a>
+<a href="/members/<%= @member.id %>">Back to Member</a>

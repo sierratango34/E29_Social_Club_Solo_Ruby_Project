@@ -1,6 +1,6 @@
 <h1><%= @member.pretty_name %></h1>
 
-<h4><a href="/e29-social-club/members">Member Home</a></h4>
+<h4><a href="/members">Member Home</a></h4>
 
 <p>First Name: <%= @member.first_name %></p>
 <p>Last Name: <%= @member.last_name %></p>
@@ -11,16 +11,16 @@
   <table class="member-edit-add-delete">
     <td class="member-edit-add-delete">
       <button type="button" class="edit-button">
-        <a class="edit-button-link" href="/e29-social-club/members/<%=@member.id%>/edit">Edit Member Details</a>
+        <a class="edit-button-link" href="/members/<%=@member.id%>/edit">Edit Member Details</a>
       </button>
     </td>
     <td class="member-edit-add-delete">
       <button type="button" class="add-button">
-        <a class="add-button-link" href="/e29-social-club/bookings/<%=@member.id%>/new">Add New Booking</a>
+        <a class="add-button-link" href="/bookings/<%=@member.id%>/new">Add New Booking</a>
       </button>
     </td>
     <td class="member-edit-add-delete">
-      <form action="/e29-social-club/members/<%=@member.id%>/delete" method="post">
+      <form action="/members/<%=@member.id%>/delete" method="post">
         <input type="submit" value="Delete Member" class="delete-button">
       </form>
     </td>
@@ -39,8 +39,8 @@
   </tr>
   <% for event in @events_and_id %>
   <tr>
-    <td><a href="/e29-social-club/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
-    <td><a href="/e29-social-club/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
+    <td><a href="/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
+    <td><a href="/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
   </tr>
   <% end %>
 </table>
@@ -57,8 +57,8 @@
   </tr>
     <% for event in @confirmed_events_and_id %>
     <tr>
-      <td><a href="/e29-social-club/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
-      <td><a href="/e29-social-club/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
+      <td><a href="/events/<%=event['event_id'].to_i%>"><%=event['event_name']%></a></td>
+      <td><a href="/bookings/<%=event['booking_id'].to_i%>"><%=event['booking_id']%></a></td>
     </tr>
     <% end %>
   </table>

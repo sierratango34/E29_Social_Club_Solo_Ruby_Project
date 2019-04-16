@@ -1,9 +1,9 @@
 <h2>All Members</h2>
 
-<h4><a href="/e29-social-club/members/new">Add New Member</a></h4>
+<h4><a href="/members/new">Add New Member</a></h4>
 
 <div class="search-bar">
-  <form action="/e29-social-club/members" method="get">
+  <form action="/members" method="get">
     <input class="search-bar" type="text" name="first_name" name="last_name">
     <input type="submit" name="search" value="Search for Member ">
   </form>
@@ -24,8 +24,8 @@
     <td><%= member.last_name %></td>
     <td><%= member.all_bookings_count%></td>
     <td><%= member.all_confirmed_bookings_count %></td>
-    <td><a href="/e29-social-club/members/<%= member.id %>">More Details</a></td>
-    <td><a href="/e29-social-club/bookings/<%= member.id %>/new">Add New Booking</a></td>
+    <td><a href="/members/<%= member.id %>">More Details</a></td>
+    <td><a href="/bookings/<%= member.id %>/new">Add New Booking</a></td>
   </tr>
   <% end %>
 </table>

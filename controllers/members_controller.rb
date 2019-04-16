@@ -2,18 +2,18 @@ require('sinatra')
 require('sinatra/reloader') if development?
 require_relative('../models/member')
 
-get '/e29-social-club/members' do #index
+get '/members' do #index
   @members = Member.all()
   @members = Member.search_by_name(params['first_name']) if (params['first_name'])
   @members = Member.search_by_name(params['last_name']) if (params['last_name'])
   erb(:'members/index')
 end
 
-get '/e29-social-club/members/new' do #new
+get '/members/new' do #new
   erb(:'members/new')
 end
 
-get '/e29-social-club/members/:id' do #show
+get '/members/:id' do #show
   @member = Member.find(params[:id])
   @confirmed_events_and_id = @member.confirmed_events_attending_and_their_booking_ids
   @events_and_id = @member.events_attending_and_their_booking_ids
@@ -21,23 +21,23 @@ get '/e29-social-club/members/:id' do #show
   erb(:'members/show')
 end
 
-post '/e29-social-club/members' do #create
+post '/members' do #create
   @member = Member.new(params)
   @member.save()
-  redirect('/e29-social-club/members')
+  redirect('/members')
 end
 
-get '/e29-social-club/members/:id/edit' do #edit
+get '/members/:id/edit' do #edit
   @member = Member.find(params['id'])
   erb(:'members/edit')
 end
 
-post '/e29-social-club/members/:id' do #update
+post '/members/:id' do #update
   Member.new(params).update
   erb(:'members/update')
 end
 
-post '/e29-social-club/members/:id/delete' do #delete
+post '/members/:id/delete' do #delete
   @member = Member.find(params['id'])
   @member.delete
   erb(:'members/delete')

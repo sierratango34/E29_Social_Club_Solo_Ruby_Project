@@ -4,12 +4,12 @@ require_relative('../models/booking')
 require_relative('../models/member')
 require_relative('../models/event')
 
-get '/e29-social-club/bookings' do
+get '/bookings' do
   @bookings = Booking.all()
   erb(:'bookings/index')
 end
 
-get '/e29-social-club/bookings/new' do
+get '/bookings/new' do
   @booking = Booking.new(params)
   @all_bookings = Booking.all()
   @all_members = Member.all()
@@ -18,7 +18,7 @@ get '/e29-social-club/bookings/new' do
 end
 
 ###BOOKING PAGE FROM MEMBER ID SHOW.ERB###
-get '/e29-social-club/bookings/:member_id/new' do
+get '/bookings/:member_id/new' do
   @booking = Booking.new(params)
   @all_bookings = Booking.all()
   @all_members = Member.all()
@@ -28,47 +28,47 @@ get '/e29-social-club/bookings/:member_id/new' do
 end
 ##########################################
 
-get '/e29-social-club/bookings/:id' do
+get '/bookings/:id' do
   @booking = Booking.find(params[:id])
   erb(:'bookings/show')
 end
 
 ####booking confirmed####
-post '/e29-social-club/bookings/:id/confirm' do
+post '/bookings/:id/confirm' do
   @booking = Booking.find(params[:id])
   @booking.confirm_booking
-  redirect('e29-social-club/bookings')
+  redirect('/bookings')
 end
 #########################
 
 ####booking paid#########
-post '/e29-social-club/bookings/:id/paid' do
+post '/bookings/:id/paid' do
   @booking = Booking.find(params[:id])
   @booking.confirm_payment
-  redirect('e29-social-club/bookings')
+  redirect('/bookings')
 end
 #########################
 
-post '/e29-social-club/bookings' do
+post '/bookings' do
   @booking = Booking.new(params)
   @booking.save
-  redirect('/e29-social-club/bookings')
+  redirect('/bookings')
 end
 
-get '/e29-social-club/bookings/:id/edit' do
+get '/bookings/:id/edit' do
   @booking = Booking.find(params[:id])
   @all_members = Member.all()
   @all_events = Event.all()
   erb(:'bookings/edit')
 end
 
-post '/e29-social-club/bookings/:id' do
+post '/bookings/:id' do
   # Booking.find(params[:id]).update
   Booking.new(params).update
   erb(:'bookings/update')
 end
 
-post '/e29-social-club/bookings/:id/delete' do
+post '/bookings/:id/delete' do
   @booking = Booking.find(params[:id])
   @booking.delete
   erb(:'bookings/delete')

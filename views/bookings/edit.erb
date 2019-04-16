@@ -1,9 +1,9 @@
 <h1>Edit Booking <% @booking.id %></h1>
 
-<h4><a href="/e29-social-club/bookings">Bookings Home</a></h4>
+<h4><a href="/bookings">Bookings Home</a></h4>
 
 
-<form action="/e29-social-club/bookings/<%=@booking.id%>" method="post">
+<form action="/bookings/<%=@booking.id%>" method="post">
   Member:
   <select name="member_id">
     <option value="<%= @booking.member.id %>"><%=@booking.member.pretty_name%></option>
@@ -30,5 +30,5 @@
 
 
 <footer>
-  <a href="/e29-social-club/bookings/<%=@booking.id%>">Back to Booking Details</a>
+  <a href="/bookings/<%=@booking.id%>">Back to Booking Details</a>
 </footer>

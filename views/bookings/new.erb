@@ -2,17 +2,17 @@
 
 <table class="new-booking-nav">
   <td class="new-booking-nav">
-    <p><a href="/e29-social-club/bookings">Bookings Home</a></p>
+    <p><a href="/bookings">Bookings Home</a></p>
   </td>
   <td class="new-booking-nav">
-    <p><a href="/e29-social-club/members/new">Add New Member</a></p>
+    <p><a href="/members/new">Add New Member</a></p>
   </td>
   <td class="new-booking-nav">
-    <p><a href="/e29-social-club/events/new">Add New Event</a></p>
+    <p><a href="/events/new">Add New Event</a></p>
   </td>
 </table>
 
-<form action="/e29-social-club/bookings" method="post">
+<form action="/bookings" method="post">
   Member:
   <select name="member_id" class="new-booking" >
     <% for member in @all_members %>
