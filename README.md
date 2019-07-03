@@ -20,7 +20,7 @@ It is a booking system used by the Social Club Organiser, to add/edit members an
 ## My Personal Spin on the Brief
 I decided to theme my app on a 'Social Club' rather than a Gym, to reflect my assumed role as principal organiser of Cohort E29's social events throughout the course. Whilst the app still referred to _'members'_ - the 'classes' were changed to _'events'_.
 
-##Installation
+## Installation
 
 * Install Postgres: `$ brew install postgres && brew services start postgresql`
 
@@ -44,7 +44,7 @@ I decided to theme my app on a 'Social Club' rather than a Gym, to reflect my as
 
 * Seed development database with some data `$ ruby db/seeds.rb`
 
-##Run
+## Run
 
 * Run the app: `$ ruby app.rb`
 
